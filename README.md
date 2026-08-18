@@ -15,8 +15,9 @@ visualizes variance across growth scenarios.
 * **variance analysis:** waterfall chart bridging actuals to projected net income.
 * **kpi tracking:** operating margin, gross margin, and opex ratio.
 
-## screenshots
-![MSFT P&L Dashboard](images/msft p&l dashboard.png)
+## dashboard
+![image alt](https://github.com/lazelee/msft-financial-dashboard/blob/b98b78c013247a97a1bc345bef857131b72770ac/images/msft%20p%26l%20dashboard.png)
+
 ## how to use
 download `.pbix` file.
 open in Power BI Desktop.
