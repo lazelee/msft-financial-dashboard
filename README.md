@@ -53,10 +53,10 @@ To ensure accurate forecasting, specific DAX methodologies were implemented:
 ---
 
 ## How to Navigate This Repository
-1. **`Data/` Folder:** Contains the raw and cleaned `MSFT_income_statement_clean.csv` utilized in the data model.
-2. **`Scripts/` Folder:** Contains the Python `.py` or Jupyter Notebook files used for the SEC EDGAR API extraction and data processing.
-3. **`Dashboard/` Folder:** Contains the `.pbix` Power BI file.
-4. **`Images/` Folder:** Contains high-resolution screenshots of the dashboard.
+1. **`data/` Folder:** Contains the raw and cleaned `MSFT_income_statement_clean.csv` utilized in the data model.
+2. **`scripts/` Folder:** Contains the Python `.py` or Jupyter Notebook files used for the SEC EDGAR API extraction and data processing.
+3. **`dashboard/` Folder:** Contains the `.pbix` Power BI file.
+4. **`images/` Folder:** Contains high-resolution screenshots of the dashboard.
 
 ## How to Use
 * download `.pbix` file.
