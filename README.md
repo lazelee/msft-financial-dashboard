@@ -45,19 +45,8 @@ The foundation of this dashboard is a clean, relational dataset generated via a 
 
 ---
 
-## Financial Metric Justifications
-The dashboard tracks four critical Key Performance Indicators (KPIs) to provide a holistic view of the company's projected financial health:
-
-* **Gross Margin (`Gross Profit / Revenue`):** Tracks production efficiency. By only subtracting direct costs (COGS), this highlights whether the core product pricing leaves sufficient room to cover operating costs.
-* **Operating Margin (`Operating Income / Revenue`):** Measures core business profitability. This factors in day-to-day operating expenses (R&D, Sales & Marketing, General & Administrative) before external factors like interest and taxes, showing the strength of the underlying business model.
-* **Opex Ratio (`Operating Expenses / Revenue`):** A vital measure of operating leverage. This immediately signals whether operating expenses are scaling efficiently alongside top-line growth or if costs are outpacing revenue.
-* **Net Margin (`Net Income / Revenue`):** The ultimate bottom line, subtracting all costs (including taxes) to show the true profit generated per dollar of revenue.
-
----
-
 ## Technical Notes & DAX Logic
 To ensure accurate forecasting, specific DAX methodologies were implemented:
-* **Base Year Isolation:** Projecting future financials based on a cumulative total of historical years yields mathematically incorrect forecasts. The DAX measures isolate the most recent actual year (`2026`) using `CALCULATE` and `MAX` functions, ignoring background filters to ensure the 2027 forecast grows strictly from the latest baseline.
 * **Handling Negative Expenses:** Because the raw SEC data represents expenses as negative integers, the DAX logic relies on addition (rather than subtraction) when calculating totals like Operating Income and Net Income. Absolute values are used in division denominators to ensure KPI percentages render correctly.
 * **Context Clearing:** Functions like `REMOVEFILTERS` were heavily utilized in the underlying variable logic to ensure that global base amounts could be calculated across the entire matrix, preventing blank returns on calculated rows like Gross Profit and Operating Income.
 
@@ -70,7 +59,7 @@ To ensure accurate forecasting, specific DAX methodologies were implemented:
 4. **`Images/` Folder:** Contains high-resolution screenshots of the dashboard.
 
 ## How to Use
-download `.pbix` file.
-open in Power BI Desktop.
-use scenario buttons to change growth parameters.
-view pdf export if Power BI is not installed.
+* download `.pbix` file.
+* open in Power BI Desktop.
+* use scenario buttons to change growth parameters.
+* view pdf export if Power BI is not installed.
