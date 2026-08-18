@@ -1,0 +1,131 @@
+Account Category,Account Name,Year,Amount
+Revenue,Revenue,2026,331839000000.0
+Revenue,Product,2026,64696000000.0
+Revenue,Service and Other,2026,267143000000.0
+Revenue,"OpenAI Global, LLC",2026,24100000000.0
+Revenue,Productivity and Business Processes,2026,139996000000.0
+Revenue,Intelligent Cloud,2026,137791000000.0
+Revenue,More Personal Computing,2026,54052000000.0
+Revenue,United States,2026,170794000000.0
+Revenue,Other Countries,2026,161045000000.0
+Revenue,Server Products and Cloud Services,2026,129425000000.0
+Revenue,Microsoft 365 Commercial Products and Cloud Services,2026,101997000000.0
+Revenue,XBOX,2026,21790000000.0
+Revenue,LinkedIn,2026,19817000000.0
+Revenue,Windows and Devices,2026,17084000000.0
+Revenue,Search advertising,2026,15176000000.0
+Revenue,Microsoft 365 Consumer products and cloud services,2026,9175000000.0
+Revenue,Dynamics products and cloud services,2026,9006000000.0
+Revenue,Enterprise and partner services,2026,8260000000.0
+Revenue,Other,2026,109000000.0
+Revenue,Microsoft Cloud,2026,214400000000.0
+COGS,Cost of revenue,2026,-106374000000.0
+COGS,Product,2026,-12098000000.0
+COGS,Service and Other,2026,-94276000000.0
+COGS,Productivity and Business Processes,2026,-25017000000.0
+COGS,Intelligent Cloud,2026,-57876000000.0
+COGS,More Personal Computing,2026,-23481000000.0
+Gross Profit,Gross margin,2026,225465000000.0
+Expenses,Research and development,2026,-35562000000.0
+Expenses,Sales and marketing,2026,-26710000000.0
+Expenses,General and administrative,2026,-7956000000.0
+Operating Income,Operating income,2026,155237000000.0
+Operating Income,Productivity and Business Processes,2026,83879000000.0
+Operating Income,Intelligent Cloud,2026,56972000000.0
+Operating Income,More Personal Computing,2026,14386000000.0
+Expenses,"Other income (expense), net",2026,-10697000000.0
+Expenses,"OpenAI Global, LLC",2026,-6500000000.0
+Taxes,Income before income taxes,2026,-165934000000.0
+Expenses,Provision for income taxes,2026,-32185000000.0
+Net Income,Net income,2026,133749000000.0
+Net Income,Retained earnings,2026,133749000000.0
+Other,Basic,2026,18.0
+Other,Diluted,2026,17.95
+Other,Basic,2026,7429000000.0
+Other,Diluted,2026,7453000000.0
+Revenue,Revenue,2025,281724000000.0
+Revenue,Product,2025,63946000000.0
+Revenue,Service and Other,2025,217778000000.0
+Revenue,Productivity and Business Processes,2025,120810000000.0
+Revenue,Intelligent Cloud,2025,106265000000.0
+Revenue,More Personal Computing,2025,54649000000.0
+Revenue,United States,2025,144546000000.0
+Revenue,Other Countries,2025,137178000000.0
+Revenue,Server Products and Cloud Services,2025,98435000000.0
+Revenue,Microsoft 365 Commercial Products and Cloud Services,2025,87767000000.0
+Revenue,XBOX,2025,23455000000.0
+Revenue,LinkedIn,2025,17812000000.0
+Revenue,Windows and Devices,2025,17314000000.0
+Revenue,Search advertising,2025,13878000000.0
+Revenue,Microsoft 365 Consumer products and cloud services,2025,7404000000.0
+Revenue,Dynamics products and cloud services,2025,7827000000.0
+Revenue,Enterprise and partner services,2025,7760000000.0
+Revenue,Other,2025,72000000.0
+Revenue,Microsoft Cloud,2025,168900000000.0
+COGS,Cost of revenue,2025,-87831000000.0
+COGS,Product,2025,-13501000000.0
+COGS,Service and Other,2025,-74330000000.0
+COGS,Productivity and Business Processes,2025,-22422000000.0
+COGS,Intelligent Cloud,2025,-40171000000.0
+COGS,More Personal Computing,2025,-25238000000.0
+Gross Profit,Gross margin,2025,193893000000.0
+Expenses,Research and development,2025,-32488000000.0
+Expenses,Sales and marketing,2025,-25654000000.0
+Expenses,General and administrative,2025,-7223000000.0
+Operating Income,Operating income,2025,128528000000.0
+Operating Income,Productivity and Business Processes,2025,69773000000.0
+Operating Income,Intelligent Cloud,2025,44589000000.0
+Operating Income,More Personal Computing,2025,14166000000.0
+Expenses,"Other income (expense), net",2025,-4901000000.0
+Expenses,"OpenAI Global, LLC",2025,-4800000000.0
+Taxes,Income before income taxes,2025,-123627000000.0
+Expenses,Provision for income taxes,2025,-21795000000.0
+Net Income,Net income,2025,101832000000.0
+Net Income,Retained earnings,2025,101832000000.0
+Other,Basic,2025,13.7
+Other,Diluted,2025,13.64
+Other,Basic,2025,7433000000.0
+Other,Diluted,2025,7465000000.0
+Revenue,Revenue,2024,245122000000.0
+Revenue,Product,2024,64773000000.0
+Revenue,Service and Other,2024,180349000000.0
+Revenue,Productivity and Business Processes,2024,106820000000.0
+Revenue,Intelligent Cloud,2024,87464000000.0
+Revenue,More Personal Computing,2024,50838000000.0
+Revenue,United States,2024,124704000000.0
+Revenue,Other Countries,2024,120418000000.0
+Revenue,Server Products and Cloud Services,2024,79828000000.0
+Revenue,Microsoft 365 Commercial Products and Cloud Services,2024,76969000000.0
+Revenue,XBOX,2024,21503000000.0
+Revenue,LinkedIn,2024,16372000000.0
+Revenue,Windows and Devices,2024,17026000000.0
+Revenue,Search advertising,2024,12306000000.0
+Revenue,Microsoft 365 Consumer products and cloud services,2024,6648000000.0
+Revenue,Dynamics products and cloud services,2024,6831000000.0
+Revenue,Enterprise and partner services,2024,7594000000.0
+Revenue,Other,2024,45000000.0
+Revenue,Microsoft Cloud,2024,137700000000.0
+COGS,Cost of revenue,2024,-74114000000.0
+COGS,Product,2024,-15272000000.0
+COGS,Service and Other,2024,-58842000000.0
+COGS,Productivity and Business Processes,2024,-19611000000.0
+COGS,Intelligent Cloud,2024,-29611000000.0
+COGS,More Personal Computing,2024,-24892000000.0
+Gross Profit,Gross margin,2024,171008000000.0
+Expenses,Research and development,2024,-29510000000.0
+Expenses,Sales and marketing,2024,-24456000000.0
+Expenses,General and administrative,2024,-7609000000.0
+Operating Income,Operating income,2024,109433000000.0
+Operating Income,Productivity and Business Processes,2024,59661000000.0
+Operating Income,Intelligent Cloud,2024,37813000000.0
+Operating Income,More Personal Computing,2024,11959000000.0
+Expenses,"Other income (expense), net",2024,-1646000000.0
+Expenses,"OpenAI Global, LLC",2024,-1500000000.0
+Taxes,Income before income taxes,2024,-107787000000.0
+Expenses,Provision for income taxes,2024,-19651000000.0
+Net Income,Net income,2024,88136000000.0
+Net Income,Retained earnings,2024,88136000000.0
+Other,Basic,2024,11.86
+Other,Diluted,2024,11.8
+Other,Basic,2024,7431000000.0
+Other,Diluted,2024,7469000000.0
