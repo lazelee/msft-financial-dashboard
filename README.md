@@ -16,7 +16,7 @@ visualizes variance across growth scenarios.
 * **kpi tracking:** operating margin, gross margin, and opex ratio.
 
 ## screenshots
-![dashboard screenshot](images/msft p&l dashboard.png)
+![MSFT P&L Dashboard](msft-financial-dashboard/images/msft p&l dashboard.png)
 ## how to use
 download `.pbix` file.
 open in Power BI Desktop.
