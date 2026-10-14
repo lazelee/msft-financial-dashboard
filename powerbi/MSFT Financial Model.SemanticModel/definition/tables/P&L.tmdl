@@ -1,0 +1,51 @@
+/// Income statement facts, $M. Costs are positive amounts; Account[Sign] gives direction.
+table 'P&L'
+	lineageTag: c93050b9-b3e8-5259-8367-7527b14cdf58
+
+	column PeriodKey
+		dataType: int64
+		isHidden
+		lineageTag: fbc90d79-ec4b-5c8a-87f7-3e5a44b43439
+		summarizeBy: none
+		sourceColumn: PeriodKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountKey
+		dataType: int64
+		isHidden
+		lineageTag: f41ae7be-698a-550b-8d7a-1cd4d2d47b54
+		summarizeBy: none
+		sourceColumn: AccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column VersionKey
+		dataType: int64
+		isHidden
+		lineageTag: 7ad2370c-8677-5fdc-8363-7f6dce05d2b2
+		summarizeBy: none
+		sourceColumn: VersionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		formatString: #,##0
+		isHidden
+		lineageTag: 6ff4d6ea-e016-5c95-955d-b0ac335db430
+		summarizeBy: none
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'P&L' = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_pl.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"PeriodKey", Int64.Type}, {"AccountKey", Int64.Type}, {"VersionKey", Int64.Type}, {"Amount", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

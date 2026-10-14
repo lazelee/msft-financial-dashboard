@@ -1,0 +1,50 @@
+Driver,Segment,Scenario,Unit,FY2027,FY2028,FY2029,Rationale
+Revenue growth,Productivity and Business Processes,Base,%,13.5,12.1,11.3,FY26 actual 15.9% fading toward a 10% long-run rate (60% of the gap kept each year)
+Revenue growth,Intelligent Cloud,Base,%,24.2,20.9,19.0,FY26 actual 29.7% (Azure AI capacity coming online) fading toward 16% long-run
+Revenue growth,More Personal Computing,Base,%,-0.3,0.2,0.5,FY26 actual -1.1% (PC/Xbox cycle) recovering toward 1% long-run
+Revenue growth,Productivity and Business Processes,Upside,%,15.5,14.1,13.3,Base +2pp: faster Copilot seat attach and M365 E5 upsell
+Revenue growth,Intelligent Cloud,Upside,%,28.2,24.9,23.0,Base +4pp: AI demand stays supply-constrained for longer
+Revenue growth,More Personal Computing,Upside,%,1.7,2.2,2.5,Base +2pp: Windows 10 end-of-support refresh and AI PC cycle
+Revenue growth,Productivity and Business Processes,Downside,%,10.5,9.1,8.3,Base -3pp: seat growth slows with enterprise hiring
+Revenue growth,Intelligent Cloud,Downside,%,18.2,14.9,13.0,Base -6pp: AI capacity overbuild and pricing pressure
+Revenue growth,More Personal Computing,Downside,%,-4.3,-3.8,-3.5,Base -4pp: weak PC and console demand
+Gross margin change,Productivity and Business Processes,Base,bp,-30,-30,-30,Mix shift to Copilot and cloud services carries slightly lower margins
+Gross margin change,Intelligent Cloud,Base,bp,-250,-150,-100,AI infrastructure depreciation keeps compressing margin (FY24-26 averaged -400bp/yr) but eases as the fleet matures
+Gross margin change,More Personal Computing,Base,bp,0,0,0,Held at FY26 level
+Gross margin change,Productivity and Business Processes,Upside,bp,0,0,0,Pricing offsets AI serving costs
+Gross margin change,Intelligent Cloud,Upside,bp,-100,-50,0,Faster utilisation and efficiency gains on AI hardware
+Gross margin change,More Personal Computing,Upside,bp,50,50,50,Higher-margin Windows OEM and search mix
+Gross margin change,Productivity and Business Processes,Downside,bp,-80,-80,-80,AI inference costs grow faster than pricing
+Gross margin change,Intelligent Cloud,Downside,bp,-400,-300,-200,FY24-26 compression continues with lower utilisation
+Gross margin change,More Personal Computing,Downside,bp,-100,-100,-100,Hardware mix and promotional pricing
+Operating expense growth,Productivity and Business Processes,Base,%,8.0,8.0,8.0,In line with FY26 (+8.7%): AI R&D and go-to-market investment
+Operating expense growth,Intelligent Cloud,Base,%,7.0,7.0,7.0,In line with FY25-26 (+7.3% / +6.7%)
+Operating expense growth,More Personal Computing,Base,%,3.0,3.0,3.0,Below FY26 (+6.2%) as gaming investment normalises
+Operating expense growth,Productivity and Business Processes,Upside,%,8.5,8.5,8.5,Base + 25% of the extra revenue growth (costs only partly flex with revenue)
+Operating expense growth,Intelligent Cloud,Upside,%,8.0,8.0,8.0,Base + 25% of the extra revenue growth
+Operating expense growth,More Personal Computing,Upside,%,3.5,3.5,3.5,Base + 25% of the extra revenue growth
+Operating expense growth,Productivity and Business Processes,Downside,%,7.25,7.25,7.25,Base - 25% of the revenue shortfall (costs are sticky on the way down)
+Operating expense growth,Intelligent Cloud,Downside,%,5.5,5.5,5.5,Base - 25% of the revenue shortfall
+Operating expense growth,More Personal Computing,Downside,%,2.0,2.0,2.0,Base - 25% of the revenue shortfall
+Other income (expense),Consolidated,Base,$M,1400,1400,1400,FY24-26 average (FY26 +10.7B gain vs FY24-25 net losses incl. OpenAI equity-method losses)
+Other income (expense),Consolidated,Upside,$M,4000,4000,4000,Further investment gains and higher interest income
+Other income (expense),Consolidated,Downside,$M,-5000,-5000,-5000,Equity-method losses resume at FY25 levels
+Effective tax rate,Consolidated,Base,%,18.4,18.4,18.4,FY24-26 average (18.2% / 17.6% / 19.4%)
+Effective tax rate,Consolidated,Upside,%,18.0,18.0,18.0,Favourable geographic mix
+Effective tax rate,Consolidated,Downside,%,19.5,19.5,19.5,Global minimum tax (Pillar Two) fully phased in
+Diluted share count change,Consolidated,Base,%,-0.2,-0.2,-0.2,FY24-26 trend: buybacks slightly exceed stock-based dilution
+Diluted share count change,Consolidated,Upside,%,-0.4,-0.4,-0.4,More cash returned via buybacks
+Diluted share count change,Consolidated,Downside,%,0.0,0.0,0.0,Buybacks only offset dilution
+Capex % of revenue,Consolidated,Base,%,33.0,31.0,29.0,FY26 34.9% (AI data centres) moderating as revenue catches up
+Capex % of revenue,Consolidated,Upside,%,35.0,33.0,31.0,More AI capacity to meet stronger demand
+Capex % of revenue,Consolidated,Downside,%,30.0,27.0,25.0,Capex pulled back as demand softens
+Operating cash flow % of revenue,Consolidated,Base,%,50.6,50.6,50.6,FY24-26 average (48.4% / 48.3% / 55.1%)
+Operating cash flow % of revenue,Consolidated,Upside,%,52.0,52.0,52.0,Stronger collections and deferred revenue growth
+Operating cash flow % of revenue,Consolidated,Downside,%,48.0,48.0,48.0,FY24-25 level
+Scenario probability,Consolidated,Base,%,50,50,50,Weight for the probability-weighted outlook
+Scenario probability,Consolidated,Upside,%,25,25,25,Weight for the probability-weighted outlook
+Scenario probability,Consolidated,Downside,%,25,25,25,Weight for the probability-weighted outlook
+Long-run revenue growth,Productivity and Business Processes,Base,%,10.0,10.0,10.0,Steady-state growth the Base path fades toward; also used to rebuild the FY26 plan
+Long-run revenue growth,Intelligent Cloud,Base,%,16.0,16.0,16.0,Steady-state growth the Base path fades toward; also used to rebuild the FY26 plan
+Long-run revenue growth,More Personal Computing,Base,%,1.0,1.0,1.0,Steady-state growth the Base path fades toward; also used to rebuild the FY26 plan
+Growth fade,Consolidated,Base,%,60,60,60,"Share of the gap to long-run growth kept each year (0 = jump to long-run, 100 = no fade)"

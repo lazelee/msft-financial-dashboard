@@ -1,0 +1,16 @@
+/// What-if: extra revenue growth applied to every forecast year (−10pp to +10pp).
+table 'Revenue Growth Flex'
+	lineageTag: b793f927-34d3-5d88-8c9c-738fffdcfe92
+
+	column 'Revenue Growth Flex'
+		dataType: double
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 7c409a44-0bd8-5154-96ef-be20591157c5
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition 'Revenue Growth Flex' = calculated
+		mode: import
+		source =
+				GENERATESERIES ( -0.10, 0.10, 0.01 )
+

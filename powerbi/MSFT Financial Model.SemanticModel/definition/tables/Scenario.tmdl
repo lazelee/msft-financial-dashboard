@@ -1,0 +1,41 @@
+/// Scenario picker (disconnected from facts; measures read the selection).
+table Scenario
+	lineageTag: ec5fe088-836e-55c5-b6aa-ab8c0a9ec611
+
+	column Scenario
+		dataType: string
+		lineageTag: 2546cf09-df10-597f-92e4-bc1a1ca87007
+		summarizeBy: none
+		sourceColumn: Scenario
+		sortByColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: aee36387-1c1e-596f-8135-37086aee6f03
+		summarizeBy: none
+		sourceColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Probability
+		dataType: double
+		formatString: 0%
+		lineageTag: 295332c9-2028-5fee-ac6b-023cd465684d
+		summarizeBy: none
+		sourceColumn: Probability
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Scenario = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("dim_scenario.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"Scenario", type text}, {"Sort", Int64.Type}, {"Probability", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

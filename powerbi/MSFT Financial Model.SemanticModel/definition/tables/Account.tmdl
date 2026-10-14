@@ -1,0 +1,65 @@
+/// Income statement lines as reported. Sign: +1 adds to profit, −1 reduces it.
+table Account
+	lineageTag: d2ae1589-1a05-5f98-a31c-b3a23d62c3c8
+
+	column AccountKey
+		dataType: int64
+		isHidden
+		lineageTag: 75d23d64-5083-53fd-affa-e0a27f43f570
+		summarizeBy: none
+		sourceColumn: AccountKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: string
+		lineageTag: 76b2fef6-b4eb-527f-8a56-15b8838fabaa
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: string
+		lineageTag: e58db5e6-62a8-5918-8508-cf6cd12ce3b7
+		summarizeBy: none
+		sourceColumn: Account
+		sortByColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Group'
+		dataType: string
+		lineageTag: a23020b3-7902-5d42-952b-399e300e3805
+		summarizeBy: none
+		sourceColumn: Line Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sign
+		dataType: int64
+		lineageTag: 3feeee1f-6b55-5921-97ac-3fc65a792ac0
+		summarizeBy: none
+		sourceColumn: Sign
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: 557bffb8-9749-53c0-9127-01faeca9a1a1
+		summarizeBy: none
+		sourceColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Account = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("dim_account.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"AccountKey", Int64.Type}, {"Code", type text}, {"Account", type text}, {"Line Group", type text}, {"Sign", Int64.Type}, {"Sort", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

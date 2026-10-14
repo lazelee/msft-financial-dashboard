@@ -1,0 +1,433 @@
+PeriodKey,SegmentKey,VersionKey,Metric,Amount
+20251,1,1,Revenue,28317.0
+20241,1,1,Revenue,25226.0
+20251,2,1,Revenue,24092.0
+20241,2,1,Revenue,20013.0
+20251,3,1,Revenue,13176.0
+20241,3,1,Revenue,11278.0
+20251,1,1,Operating income,16516.0
+20241,1,1,Operating income,14297.0
+20251,2,1,Operating income,10503.0
+20241,2,1,Operating income,8908.0
+20251,3,1,Operating income,3533.0
+20241,3,1,Operating income,3690.0
+20252,1,1,Revenue,29437.0
+20242,1,1,Revenue,25854.0
+20252,2,1,Revenue,25544.0
+20242,2,1,Revenue,21525.0
+20252,3,1,Revenue,14651.0
+20242,3,1,Revenue,14641.0
+20252,1,1,Operating income,16885.0
+20242,1,1,Operating income,14515.0
+20252,2,1,Operating income,10851.0
+20242,2,1,Operating income,9555.0
+20252,3,1,Operating income,3917.0
+20242,3,1,Operating income,2962.0
+20253,1,1,Revenue,29944.0
+20243,1,1,Revenue,27113.0
+20253,2,1,Revenue,26751.0
+20243,2,1,Revenue,22141.0
+20253,3,1,Revenue,13371.0
+20243,3,1,Revenue,12604.0
+20253,1,1,Operating income,17379.0
+20243,1,1,Operating income,15143.0
+20253,2,1,Operating income,11095.0
+20243,2,1,Operating income,9515.0
+20253,3,1,Operating income,3526.0
+20243,3,1,Operating income,2923.0
+20250,1,1,Revenue,120810.0
+20240,1,1,Revenue,106820.0
+20230,1,1,Revenue,94151.0
+20250,1,1,Cost of revenue,22422.0
+20240,1,1,Cost of revenue,19611.0
+20230,1,1,Cost of revenue,17202.0
+20250,1,1,Operating expenses,28615.0
+20240,1,1,Operating expenses,27548.0
+20230,1,1,Operating expenses,26875.0
+20250,1,1,Operating income,69773.0
+20240,1,1,Operating income,59661.0
+20230,1,1,Operating income,50074.0
+20250,2,1,Revenue,106265.0
+20240,2,1,Revenue,87464.0
+20230,2,1,Revenue,72944.0
+20250,2,1,Cost of revenue,40171.0
+20240,2,1,Cost of revenue,29611.0
+20230,2,1,Cost of revenue,24109.0
+20250,2,1,Operating expenses,21505.0
+20240,2,1,Operating expenses,20040.0
+20230,2,1,Operating expenses,20424.0
+20250,2,1,Operating income,44589.0
+20240,2,1,Operating income,37813.0
+20230,2,1,Operating income,28411.0
+20250,3,1,Revenue,54649.0
+20240,3,1,Revenue,50838.0
+20230,3,1,Revenue,44820.0
+20250,3,1,Cost of revenue,25238.0
+20240,3,1,Cost of revenue,24892.0
+20230,3,1,Cost of revenue,24552.0
+20250,3,1,Operating expenses,15245.0
+20240,3,1,Operating expenses,13987.0
+20230,3,1,Operating expenses,10230.0
+20250,3,1,Operating income,14166.0
+20240,3,1,Operating income,11959.0
+20230,3,1,Operating income,10038.0
+20261,1,1,Revenue,33020.0
+20261,1,1,Cost of revenue,5721.0
+20251,1,1,Cost of revenue,5294.0
+20261,1,1,Operating expenses,6892.0
+20251,1,1,Operating expenses,6507.0
+20261,1,1,Operating income,20407.0
+20261,2,1,Revenue,30897.0
+20261,2,1,Cost of revenue,12314.0
+20251,2,1,Cost of revenue,8614.0
+20261,2,1,Operating expenses,5192.0
+20251,2,1,Operating expenses,4975.0
+20261,2,1,Operating income,13391.0
+20261,3,1,Revenue,13756.0
+20261,3,1,Cost of revenue,6008.0
+20251,3,1,Cost of revenue,6191.0
+20261,3,1,Operating expenses,3585.0
+20251,3,1,Operating expenses,3452.0
+20261,3,1,Operating income,4163.0
+20262,1,1,Revenue,34116.0
+20262,1,1,Cost of revenue,6110.0
+20252,1,1,Cost of revenue,5569.0
+20262,1,1,Operating expenses,7407.0
+20252,1,1,Operating expenses,6983.0
+20262,1,1,Operating income,20599.0
+20262,2,1,Revenue,32907.0
+20262,2,1,Cost of revenue,13566.0
+20252,2,1,Cost of revenue,9405.0
+20262,2,1,Operating expenses,5468.0
+20252,2,1,Operating expenses,5288.0
+20262,2,1,Operating income,13873.0
+20262,3,1,Revenue,14250.0
+20262,3,1,Cost of revenue,6302.0
+20252,3,1,Cost of revenue,6825.0
+20262,3,1,Operating expenses,4145.0
+20252,3,1,Operating expenses,3909.0
+20262,3,1,Operating income,3803.0
+20263,1,1,Revenue,35013.0
+20263,1,1,Cost of revenue,6197.0
+20253,1,1,Cost of revenue,5517.0
+20263,1,1,Operating expenses,7843.0
+20253,1,1,Operating expenses,7048.0
+20263,1,1,Operating income,20973.0
+20263,2,1,Revenue,34681.0
+20263,2,1,Cost of revenue,15120.0
+20253,2,1,Cost of revenue,10307.0
+20263,2,1,Operating expenses,5808.0
+20253,2,1,Operating expenses,5349.0
+20263,2,1,Operating income,13753.0
+20263,3,1,Revenue,13192.0
+20263,3,1,Cost of revenue,5511.0
+20253,3,1,Cost of revenue,6095.0
+20263,3,1,Operating expenses,4009.0
+20253,3,1,Operating expenses,3750.0
+20263,3,1,Operating income,3672.0
+20260,1,1,Revenue,139996.0
+20260,1,1,Cost of revenue,25017.0
+20260,1,1,Operating expenses,31100.0
+20260,1,1,Operating income,83879.0
+20260,2,1,Revenue,137791.0
+20260,2,1,Cost of revenue,57876.0
+20260,2,1,Operating expenses,22943.0
+20260,2,1,Operating income,56972.0
+20260,3,1,Revenue,54052.0
+20260,3,1,Cost of revenue,23481.0
+20260,3,1,Operating expenses,16185.0
+20260,3,1,Operating income,14386.0
+20254,1,1,Revenue,33112.0
+20244,1,1,Revenue,28627.0
+20254,2,1,Revenue,29878.0
+20244,2,1,Revenue,23785.0
+20254,3,1,Revenue,13451.0
+20244,3,1,Revenue,12315.0
+20254,1,1,Operating income,18993.0
+20244,1,1,Operating income,15706.0
+20254,2,1,Operating income,12140.0
+20244,2,1,Operating income,9835.0
+20254,3,1,Operating income,3190.0
+20244,3,1,Operating income,2384.0
+20254,1,1,Cost of revenue,6042.0
+20254,1,1,Operating expenses,8077.0
+20254,2,1,Cost of revenue,11845.0
+20254,2,1,Operating expenses,5893.0
+20254,3,1,Cost of revenue,6127.0
+20254,3,1,Operating expenses,4134.0
+20264,1,1,Revenue,37847.0
+20264,1,1,Cost of revenue,6989.0
+20264,1,1,Operating expenses,8958.0
+20264,1,1,Operating income,21900.0
+20264,2,1,Revenue,39306.0
+20264,2,1,Cost of revenue,16876.0
+20264,2,1,Operating expenses,6475.0
+20264,2,1,Operating income,15955.0
+20264,3,1,Revenue,12854.0
+20264,3,1,Cost of revenue,5660.0
+20264,3,1,Operating expenses,4446.0
+20264,3,1,Operating income,2748.0
+20270,1,2,Revenue,158895.46
+20270,1,2,Cost of revenue,28870.98138
+20270,1,2,Operating expenses,33588.0
+20270,1,2,Operating income,96436.47862
+20270,2,2,Revenue,171136.422
+20270,2,2,Cost of revenue,76160.40255
+20270,2,2,Operating expenses,24549.01
+20270,2,2,Operating income,70427.00945
+20270,3,2,Revenue,53889.844
+20270,3,2,Cost of revenue,23410.557
+20270,3,2,Operating expenses,16670.55
+20270,3,2,Operating income,13808.737
+20280,1,2,Revenue,178121.81066
+20280,1,2,Cost of revenue,32898.735559
+20280,1,2,Operating expenses,36275.04
+20280,1,2,Operating income,108948.035101
+20280,2,2,Revenue,206903.934198
+20280,2,2,Cost of revenue,95181.485696
+20280,2,2,Operating expenses,26267.4407
+20280,2,2,Operating income,85455.007802
+20280,3,2,Revenue,53997.623688
+20280,3,2,Cost of revenue,23457.378114
+20280,3,2,Operating expenses,17170.6665
+20280,3,2,Operating income,13369.579074
+20290,1,2,Revenue,198249.575265
+20290,1,2,Cost of revenue,37211.041403
+20290,1,2,Operating expenses,39177.0432
+20290,1,2,Operating income,121861.490662
+20290,2,2,Revenue,246215.681696
+20290,2,2,Cost of revenue,115728.124795
+20290,2,2,Operating expenses,28106.161549
+20290,2,2,Operating income,102381.395352
+20290,3,2,Revenue,54267.611806
+20290,3,2,Cost of revenue,23574.665005
+20290,3,2,Operating expenses,17685.786495
+20290,3,2,Operating income,13007.160307
+20271,1,2,Revenue,37415.167372
+20271,1,2,Cost of revenue,6709.498987
+20271,1,2,Operating expenses,7540.605668
+20271,1,2,Operating income,23165.062716
+20271,2,2,Revenue,38777.303819
+20271,2,2,Cost of revenue,16267.80562
+20271,2,2,Operating expenses,5617.322993
+20271,2,2,Operating income,16892.175206
+20271,3,2,Revenue,12887.574899
+20271,3,2,Cost of revenue,5866.347822
+20271,3,2,Operating expenses,3733.672133
+20271,3,2,Operating income,3287.554943
+20272,1,2,Revenue,38632.232429
+20272,1,2,Cost of revenue,7111.010127
+20272,1,2,Operating expenses,8098.067681
+20272,1,2,Operating income,23423.154621
+20272,2,2,Revenue,41375.062035
+20272,2,2,Cost of revenue,17841.404338
+20272,2,2,Operating expenses,5943.635403
+20272,2,2,Operating income,17590.022294
+20272,3,2,Revenue,14724.878737
+20272,3,2,Cost of revenue,6306.953362
+20272,3,2,Operating expenses,4271.939019
+20272,3,2,Operating income,4145.986356
+20273,1,2,Revenue,39818.131786
+20273,1,2,Cost of revenue,7127.733418
+20273,1,2,Operating expenses,8371.655855
+20273,1,2,Operating income,24318.742513
+20273,2,2,Revenue,43159.20858
+20273,2,2,Cost of revenue,19718.930273
+20273,2,2,Operating expenses,6160.352646
+20273,2,2,Operating income,17279.925661
+20273,3,2,Revenue,13232.76955
+20273,3,2,Cost of revenue,5574.068925
+20273,3,2,Operating expenses,4114.965026
+20273,3,2,Operating income,3543.735599
+20274,1,2,Revenue,43029.928413
+20274,1,2,Cost of revenue,7922.738848
+20274,1,2,Operating expenses,9577.670795
+20274,1,2,Operating income,25529.51877
+20274,2,2,Revenue,47824.847566
+20274,2,2,Cost of revenue,22332.262318
+20274,2,2,Operating expenses,6827.698958
+20274,2,2,Operating income,18664.88629
+20274,3,2,Revenue,13044.620814
+20274,3,2,Cost of revenue,5663.186891
+20274,3,2,Operating expenses,4549.973821
+20274,3,2,Operating income,2831.460102
+20270,1,3,Revenue,161695.38
+20270,1,3,Cost of revenue,28894.635
+20270,1,3,Operating expenses,33743.5
+20270,1,3,Operating income,99057.245
+20270,2,3,Revenue,176648.062
+20270,2,3,Cost of revenue,75963.51262
+20270,2,3,Operating expenses,24778.44
+20270,2,3,Operating income,75906.10938
+20270,3,3,Revenue,54970.884
+20270,3,3,Cost of revenue,23605.32258
+20270,3,3,Operating expenses,16751.475
+20270,3,3,Operating income,14614.08642
+20280,1,3,Revenue,184494.42858
+20280,1,3,Cost of revenue,32968.778535
+20280,1,3,Operating expenses,36611.6975
+20280,1,3,Operating income,114913.952545
+20280,2,3,Revenue,220633.429438
+20280,2,3,Cost of revenue,95981.59441
+20280,2,3,Operating expenses,26760.7152
+20280,2,3,Operating income,97891.119828
+20280,3,3,Revenue,56180.243448
+20280,3,3,Cost of revenue,23843.73846
+20280,3,3,Operating expenses,17337.776625
+20280,3,3,Operating income,14998.728363
+20290,1,3,Revenue,209032.187581
+20290,1,3,Cost of revenue,37353.62608
+20290,1,3,Operating expenses,39723.691787
+20290,1,3,Operating income,131954.869713
+20290,2,3,Revenue,271379.118209
+20290,2,3,Cost of revenue,118057.361124
+20290,2,3,Operating expenses,28901.572416
+20290,2,3,Operating income,124420.184669
+20290,3,3,Revenue,57584.749534
+20290,3,3,Cost of revenue,24151.908173
+20290,3,3,Operating expenses,17944.598807
+20290,3,3,Operating income,15488.242554
+20271,1,3,Revenue,38074.465476
+20271,1,3,Cost of revenue,6714.995993
+20271,1,3,Operating expenses,7575.51588
+20271,1,3,Operating income,23783.953603
+20271,2,3,Revenue,40026.170287
+20271,2,3,Cost of revenue,16225.750077
+20271,2,3,Operating expenses,5669.821339
+20271,2,3,Operating income,18130.598871
+20271,3,3,Revenue,13146.101978
+20271,3,3,Cost of revenue,5915.153267
+20271,3,3,Operating expenses,3751.796755
+20271,3,3,Operating income,3479.151956
+20272,1,3,Revenue,39312.976613
+20272,1,3,Cost of revenue,7116.836085
+20272,1,3,Operating expenses,8135.558735
+20272,1,3,Operating income,24060.581792
+20272,2,3,Revenue,42707.592213
+20272,2,3,Cost of revenue,17795.280727
+20272,2,3,Operating expenses,5999.183397
+20272,2,3,Operating income,18913.12809
+20272,3,3,Revenue,15020.262463
+20272,3,3,Cost of revenue,6359.424451
+20272,3,3,Operating expenses,4292.676587
+20272,3,3,Operating income,4368.161424
+20273,1,3,Revenue,40519.772874
+20273,1,3,Cost of revenue,7133.573077
+20273,1,3,Operating expenses,8410.413521
+20273,1,3,Operating income,24975.786276
+20273,2,3,Revenue,44549.199194
+20273,2,3,Cost of revenue,19667.95288
+20273,2,3,Operating expenses,6217.926035
+20273,2,3,Operating income,18663.32028
+20273,3,3,Revenue,13498.221296
+20273,3,3,Cost of revenue,5620.442737
+20273,3,3,Operating expenses,4134.940585
+20273,3,3,Operating income,3742.837975
+20274,1,3,Revenue,43788.165037
+20274,1,3,Cost of revenue,7929.229845
+20274,1,3,Operating expenses,9622.011864
+20274,1,3,Operating income,26236.923329
+20274,2,3,Revenue,49365.100305
+20274,2,3,Cost of revenue,22274.528937
+20274,2,3,Operating expenses,6891.509229
+20274,2,3,Operating income,20199.06214
+20274,3,3,Revenue,13306.298262
+20274,3,3,Cost of revenue,5710.302125
+20274,3,3,Operating expenses,4572.061072
+20274,3,3,Operating income,3023.935065
+20270,1,4,Revenue,154695.58
+20270,1,4,Cost of revenue,28881.34964
+20270,1,4,Operating expenses,33354.75
+20270,1,4,Operating income,92459.48036
+20270,2,4,Revenue,162868.962
+20270,2,4,Cost of revenue,74924.19048
+20270,2,4,Operating expenses,24204.865
+20270,2,4,Operating income,63739.90652
+20270,3,4,Revenue,51727.764
+20270,3,4,Cost of revenue,22988.59464
+20270,3,4,Operating expenses,16508.7
+20270,3,4,Operating income,12230.46936
+20280,1,4,Revenue,168772.87778
+20280,1,4,Cost of revenue,32859.735479
+20280,1,4,Operating expenses,35772.969375
+20280,1,4,Operating income,100140.172926
+20280,2,4,Revenue,187136.437338
+20280,2,4,Cost of revenue,91701.987982
+20280,2,4,Operating expenses,25536.132575
+20280,2,4,Operating income,69898.316781
+20280,3,4,Revenue,49762.108968
+20280,3,4,Cost of revenue,22612.649133
+20280,3,4,Operating expenses,16838.874
+20280,3,4,Operating income,10310.585835
+20290,1,4,Revenue,182781.026636
+20290,1,4,Cost of revenue,37049.341737
+20290,1,4,Operating expenses,38366.509655
+20290,1,4,Operating income,107365.175244
+20290,2,4,Revenue,211464.174192
+20290,2,4,Cost of revenue,107852.529903
+20290,2,4,Operating expenses,26940.619867
+20290,2,4,Operating income,76671.024422
+20290,3,4,Revenue,48020.435154
+20290,3,4,Cost of revenue,22301.410765
+20290,3,4,Operating expenses,17175.65148
+20290,3,4,Operating income,8543.372909
+20271,1,4,Revenue,36426.220217
+20271,1,4,Cost of revenue,6711.908529
+20271,1,4,Operating expenses,7488.240351
+20271,1,4,Operating income,22226.071337
+20271,2,4,Revenue,36904.004118
+20271,2,4,Cost of revenue,16003.751637
+20271,2,4,Operating expenses,5538.575475
+20271,2,4,Operating income,15361.677006
+20271,3,4,Revenue,12370.520741
+20271,3,4,Cost of revenue,5760.610143
+20271,3,4,Operating expenses,3697.422889
+20271,3,4,Operating income,2912.487708
+20272,1,4,Revenue,37611.116154
+20272,1,4,Cost of revenue,7113.563861
+20272,1,4,Operating expenses,8041.8311
+20272,1,4,Operating income,22455.721192
+20272,2,4,Revenue,39376.266768
+20272,2,4,Cost of revenue,17551.808188
+20272,2,4,Operating expenses,5860.313411
+20272,2,4,Operating income,15964.145168
+20272,3,4,Revenue,14134.111285
+20272,3,4,Cost of revenue,6193.274011
+20272,3,4,Operating expenses,4230.463883
+20272,3,4,Operating income,3710.373391
+20273,1,4,Revenue,38765.670153
+20273,1,4,Cost of revenue,7130.293157
+20273,1,4,Operating expenses,8313.519356
+20273,1,4,Operating income,23321.857639
+20273,2,4,Revenue,41074.222658
+20273,2,4,Cost of revenue,19398.858703
+20273,2,4,Operating expenses,6073.992562
+20273,2,4,Operating income,15601.371393
+20273,3,4,Revenue,12701.866058
+20273,3,4,Cost of revenue,5473.599411
+20273,3,4,Operating expenses,4075.013909
+20273,3,4,Operating income,3153.252737
+20274,1,4,Revenue,41892.573477
+20274,1,4,Cost of revenue,7925.584093
+20274,1,4,Operating expenses,9511.159192
+20274,1,4,Operating income,24455.830192
+20274,2,4,Revenue,45514.468456
+20274,2,4,Cost of revenue,21969.771952
+20274,2,4,Operating expenses,6731.983552
+20274,2,4,Operating income,16812.712953
+20274,3,4,Revenue,12521.265916
+20274,3,4,Cost of revenue,5561.111075
+20274,3,4,Operating expenses,4505.799318
+20274,3,4,Operating income,2454.355524
+20260,1,5,Revenue,135135.745254
+20260,1,5,Cost of revenue,25080.818476
+20260,1,5,Operating expenses,29723.327465
+20260,1,5,Operating income,80331.599313
+20260,2,5,Revenue,126771.404057
+20260,2,5,Cost of revenue,47922.966851
+20260,2,5,Operating expenses,23077.097056
+20260,2,5,Operating income,55771.340151
+20260,3,5,Revenue,57325.60779
+20260,3,5,Cost of revenue,26474.110952
+20260,3,5,Operating expenses,16616.145349
+20260,3,5,Operating income,14235.351489

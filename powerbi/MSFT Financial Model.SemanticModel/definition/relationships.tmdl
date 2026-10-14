@@ -1,0 +1,43 @@
+relationship 6ba4c47b-7119-5845-adc8-16ce6386f9ed
+	fromColumn: 'P&L'.PeriodKey
+	toColumn: Period.PeriodKey
+
+relationship fb0fb847-0e69-59c8-b26c-fd6a49f30fd2
+	fromColumn: 'P&L'.AccountKey
+	toColumn: Account.AccountKey
+
+relationship 3226679d-d28b-5a26-9ad8-ee5afcfe2ae5
+	fromColumn: 'P&L'.VersionKey
+	toColumn: Version.VersionKey
+
+relationship 2217b5d5-6062-5b66-9a65-08f91091241b
+	fromColumn: 'Segment P&L'.PeriodKey
+	toColumn: Period.PeriodKey
+
+relationship 612998d8-3f3b-54c3-9a9d-e62a427e1ff4
+	fromColumn: 'Segment P&L'.SegmentKey
+	toColumn: Segment.SegmentKey
+
+relationship b508ea43-483a-5957-8c73-6f5b8d08acb6
+	fromColumn: 'Segment P&L'.VersionKey
+	toColumn: Version.VersionKey
+
+relationship 2a9e559c-d80a-5a77-9dbc-6d77af33d087
+	fromColumn: KPI.PeriodKey
+	toColumn: Period.PeriodKey
+
+relationship 9cd08b1a-d9f3-5019-a6c6-0010f556d663
+	fromColumn: KPI.VersionKey
+	toColumn: Version.VersionKey
+
+relationship 3ea49fc2-c55a-53fd-9dc1-d81c0d8ececf
+	fromColumn: 'Revenue Mix'.PeriodKey
+	toColumn: Period.PeriodKey
+
+relationship 649021c0-b4d6-5c44-8871-ee6baf379a6d
+	fromColumn: Bridge.Scenario
+	toColumn: Scenario.Scenario
+
+relationship d5da5aba-293d-5772-81dd-0d25a74105a5
+	fromColumn: Assumptions.Scenario
+	toColumn: Scenario.Scenario

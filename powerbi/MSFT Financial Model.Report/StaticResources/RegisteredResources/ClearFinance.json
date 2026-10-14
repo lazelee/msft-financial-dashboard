@@ -1,0 +1,31 @@
+{
+  "name": "ClearFinance",
+  "dataColors": [
+    "#0F6CBD",
+    "#5BA4E5",
+    "#A7C8EB",
+    "#1B7F3B",
+    "#B3261E",
+    "#8A6D00",
+    "#5B6470",
+    "#2E4A62"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1F2328",
+  "tableAccent": "#0F6CBD",
+  "good": "#1B7F3B",
+  "bad": "#B3261E",
+  "neutral": "#8A6D00",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#1F2328"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#1F2328"
+    }
+  }
+}

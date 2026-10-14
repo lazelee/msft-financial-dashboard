@@ -1,0 +1,49 @@
+/// Microsoft's three reporting segments (FY2025 basis, history recast by Microsoft).
+table Segment
+	lineageTag: 139d72c9-a610-5524-bcf4-8b900a101230
+
+	column SegmentKey
+		dataType: int64
+		isHidden
+		lineageTag: c197881b-1725-518b-b2d7-dd794d9fa119
+		summarizeBy: none
+		sourceColumn: SegmentKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: 418665d2-e44d-509e-b6f4-1fe536025aa4
+		summarizeBy: none
+		sourceColumn: Segment
+		sortByColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Short Name'
+		dataType: string
+		lineageTag: f616b6f8-5d59-536f-865b-b9667c10c8a9
+		summarizeBy: none
+		sourceColumn: Short Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: ce9eb15d-cda8-5893-93e5-11c579d31272
+		summarizeBy: none
+		sourceColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Segment = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("dim_segment.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"SegmentKey", Int64.Type}, {"Segment", type text}, {"Short Name", type text}, {"Sort", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

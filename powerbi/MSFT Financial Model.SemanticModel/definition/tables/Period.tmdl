@@ -1,0 +1,117 @@
+/// Fiscal periods: years and quarters (Microsoft's fiscal year ends June 30).
+table Period
+	lineageTag: 38cd8914-61cf-50d3-ac09-16b5ae886c65
+
+	column PeriodKey
+		dataType: int64
+		isHidden
+		lineageTag: e9dede69-6a92-5a14-b484-c22c9313cb6c
+		summarizeBy: none
+		sourceColumn: PeriodKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2eb05e32-e700-50ea-a4ee-3437b39e99f5
+		summarizeBy: none
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d272891-94e5-5de3-bc4b-b87e8a7822a8
+		summarizeBy: none
+		sourceColumn: Fiscal Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Period Type'
+		dataType: string
+		lineageTag: 9c00fea9-7c3d-5ecf-b563-e84ee20fdd07
+		summarizeBy: none
+		sourceColumn: Period Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year Label'
+		dataType: string
+		lineageTag: 7aa4464a-769a-5aed-b667-6499da1c7232
+		summarizeBy: none
+		sourceColumn: Fiscal Year Label
+		sortByColumn: 'Fiscal Year'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Period Label'
+		dataType: string
+		lineageTag: 313d29d4-45ea-5c8c-9c79-21a054ec1590
+		summarizeBy: none
+		sourceColumn: Period Label
+		sortByColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quarter Label'
+		dataType: string
+		lineageTag: c488be76-ebf7-5f80-9f44-592843f89ab4
+		summarizeBy: none
+		sourceColumn: Quarter Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Period End'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: b1615009-c896-566d-95ea-b3657cc65acc
+		summarizeBy: none
+		sourceColumn: Period End
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: 689166d1-96fb-574d-abc8-04ee325c8833
+		summarizeBy: none
+		sourceColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Forecast'
+		dataType: boolean
+		lineageTag: 957923d0-2ebf-5044-8eb9-0b21dcbc3f67
+		summarizeBy: none
+		sourceColumn: Is Forecast
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Years From Last Actual'
+		dataType: int64
+		lineageTag: a1a55f1a-3b39-517c-80ee-65536846f1e9
+		summarizeBy: none
+		sourceColumn: Years From Last Actual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Timeline
+		dataType: string
+		lineageTag: cf896969-8306-5f82-8d5c-c37b86b1e488
+		summarizeBy: none
+		sourceColumn: Timeline
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Period = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("dim_period.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"PeriodKey", Int64.Type}, {"Fiscal Year", Int64.Type}, {"Fiscal Quarter", Int64.Type}, {"Period Type", type text}, {"Fiscal Year Label", type text}, {"Period Label", type text}, {"Quarter Label", type text}, {"Period End", type date}, {"Sort", Int64.Type}, {"Is Forecast", type logical}, {"Years From Last Actual", Int64.Type}, {"Timeline", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

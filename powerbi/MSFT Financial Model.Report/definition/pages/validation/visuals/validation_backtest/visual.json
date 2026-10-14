@@ -1,0 +1,183 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "validation_backtest",
+  "position": {
+    "x": 24,
+    "y": 180,
+    "z": 8000,
+    "width": 760,
+    "height": 524,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest"
+                    }
+                  },
+                  "Property": "Target Year"
+                }
+              },
+              "queryRef": "Backtest.Target Year",
+              "nativeQueryRef": "Target Year",
+              "displayName": "Year"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest"
+                    }
+                  },
+                  "Property": "Metric"
+                }
+              },
+              "queryRef": "Backtest.Metric",
+              "nativeQueryRef": "Metric"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest"
+                    }
+                  },
+                  "Property": "Actual"
+                }
+              },
+              "queryRef": "Backtest.Actual",
+              "nativeQueryRef": "Actual"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest"
+                    }
+                  },
+                  "Property": "Model"
+                }
+              },
+              "queryRef": "Backtest.Model",
+              "nativeQueryRef": "Model"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest"
+                    }
+                  },
+                  "Property": "Model Error %"
+                }
+              },
+              "queryRef": "Backtest.Model Error %",
+              "nativeQueryRef": "Model Error %",
+              "displayName": "Model error"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest"
+                    }
+                  },
+                  "Property": "Naive Error %"
+                }
+              },
+              "queryRef": "Backtest.Naive Error %",
+              "nativeQueryRef": "Naive Error %",
+              "displayName": "Naive error"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest"
+                    }
+                  },
+                  "Property": "One-off Reason"
+                }
+              },
+              "queryRef": "Backtest.One-off Reason",
+              "nativeQueryRef": "One-off Reason",
+              "displayName": "One-off"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Backtest"
+                  }
+                },
+                "Property": "Target Year"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'One-year-ahead forecasts vs actuals ($M; EPS in $)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11.0D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F2328'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

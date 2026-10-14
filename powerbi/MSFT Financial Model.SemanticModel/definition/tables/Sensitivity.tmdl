@@ -1,0 +1,90 @@
+/// First forecast year diluted EPS (Base) across revenue growth and operating margin shifts.
+table Sensitivity
+	lineageTag: e1b38920-e2ae-5c38-ae68-3c278f8f3ac8
+
+	column 'Revenue Growth Delta (pp)'
+		dataType: int64
+		isHidden
+		lineageTag: abe42af6-1ecb-5ef1-8852-fd37692b5522
+		summarizeBy: none
+		sourceColumn: Revenue Growth Delta (pp)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Operating Margin Delta (bp)'
+		dataType: int64
+		isHidden
+		lineageTag: d5ab7c9b-b02a-55c0-b00b-2a3eeab524db
+		summarizeBy: none
+		sourceColumn: Operating Margin Delta (bp)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue
+		dataType: double
+		formatString: #,##0
+		isHidden
+		lineageTag: a76b5bbd-c1ea-57ff-9696-3e535f059b5e
+		summarizeBy: none
+		sourceColumn: Revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Operating Margin'
+		dataType: double
+		formatString: 0.0%
+		isHidden
+		lineageTag: 3b842839-309d-5a6d-9c70-18e5ea7a45e4
+		summarizeBy: none
+		sourceColumn: Operating Margin
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Net Income'
+		dataType: double
+		formatString: #,##0
+		isHidden
+		lineageTag: 41874596-5923-5bcb-9574-b46ca78a8d29
+		summarizeBy: none
+		sourceColumn: Net Income
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Diluted EPS'
+		dataType: double
+		formatString: $0.00
+		isHidden
+		lineageTag: c185560d-6d29-5346-a1bd-b2c75a27f97c
+		summarizeBy: none
+		sourceColumn: Diluted EPS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Revenue Growth Label'
+		dataType: string
+		lineageTag: a9411005-6245-5019-928f-6344480ad418
+		summarizeBy: none
+		sourceColumn: Revenue Growth Label
+		sortByColumn: 'Revenue Growth Delta (pp)'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Operating Margin Label'
+		dataType: string
+		lineageTag: 70b44986-509d-5581-9247-99e134d26f76
+		summarizeBy: none
+		sourceColumn: Operating Margin Label
+		sortByColumn: 'Operating Margin Delta (bp)'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sensitivity = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_sensitivity.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"Revenue Growth Delta (pp)", Int64.Type}, {"Operating Margin Delta (bp)", Int64.Type}, {"Revenue", type number}, {"Operating Margin", type number}, {"Net Income", type number}, {"Diluted EPS", type number}, {"Revenue Growth Label", type text}, {"Operating Margin Label", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

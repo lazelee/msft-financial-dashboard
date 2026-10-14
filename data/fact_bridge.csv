@@ -1,0 +1,61 @@
+Scenario,Bridge,Step,Step Order,Step Type,Value
+Base,Net income,FY2026 actual,0,Start,133749.0
+Base,Net income,Revenue growth,1,Change,19638.878513
+Base,Net income,Gross margin rate,2,Change,-4330.315441
+Base,Net income,Operating expense leverage,3,Change,5193.178089
+Base,Net income,Other income (expense),4,Change,-7493.729151
+Base,Net income,Tax rate,5,Change,1813.923647
+Base,Net income,FY2027 base,99,End,148570.935657
+Base,Diluted EPS,FY2026 actual,0,Start,17.945659
+Base,Diluted EPS,Revenue growth,1,Change,2.63503
+Base,Diluted EPS,Gross margin rate,2,Change,-0.581016
+Base,Diluted EPS,Operating expense leverage,3,Change,0.69679
+Base,Diluted EPS,Other income (expense),4,Change,-1.005465
+Base,Diluted EPS,Tax rate,5,Change,0.243382
+Base,Diluted EPS,Share count,6,Change,0.039949
+Base,Diluted EPS,FY2027 base,99,End,19.974329
+Base,Operating income by segment,FY2026 actual,0,Start,155237.0
+Base,Operating income by segment,Productivity and Business Processes,10,Change,12557.47862
+Base,Operating income by segment,Intelligent Cloud,11,Change,13455.00945
+Base,Operating income by segment,More Personal Computing,12,Change,-577.263
+Base,Operating income by segment,FY2027 base,99,End,180672.22507
+Upside,Net income,FY2026 actual,0,Start,133749.0
+Upside,Net income,Revenue growth,1,Change,23180.554314
+Upside,Net income,Gross margin rate,2,Change,-1920.784642
+Upside,Net income,Operating expense leverage,3,Change,6419.90789
+Upside,Net income,Other income (expense),4,Change,-5398.032067
+Upside,Net income,Tax rate,5,Change,2702.855961
+Upside,Net income,FY2027 upside,99,End,158733.501456
+Upside,Diluted EPS,FY2026 actual,0,Start,17.945659
+Upside,Diluted EPS,Revenue growth,1,Change,3.110231
+Upside,Diluted EPS,Gross margin rate,2,Change,-0.25772
+Upside,Diluted EPS,Operating expense leverage,3,Change,0.861386
+Upside,Diluted EPS,Other income (expense),4,Change,-0.724276
+Upside,Diluted EPS,Tax rate,5,Change,0.362653
+Upside,Diluted EPS,Share count,6,Change,0.085534
+Upside,Diluted EPS,FY2027 upside,99,End,21.383468
+Upside,Operating income by segment,FY2026 actual,0,Start,155237.0
+Upside,Operating income by segment,Productivity and Business Processes,10,Change,15178.245
+Upside,Operating income by segment,Intelligent Cloud,11,Change,18934.10938
+Upside,Operating income by segment,More Personal Computing,12,Change,228.08642
+Upside,Operating income by segment,FY2027 upside,99,End,189577.4408
+Downside,Net income,FY2026 actual,0,Start,133749.0
+Downside,Net income,Revenue growth,1,Change,14122.550468
+Downside,Net income,Gross margin rate,2,Change,-6782.10938
+Downside,Net income,Operating expense leverage,3,Change,3293.493665
+Downside,Net income,Other income (expense),4,Change,-12652.368128
+Downside,Net income,Tax rate,5,Change,-169.532351
+Downside,Net income,FY2027 downside,99,End,131561.034273
+Downside,Diluted EPS,FY2026 actual,0,Start,17.945659
+Downside,Diluted EPS,Revenue growth,1,Change,1.894881
+Downside,Diluted EPS,Gross margin rate,2,Change,-0.909984
+Downside,Diluted EPS,Operating expense leverage,3,Change,0.441902
+Downside,Diluted EPS,Other income (expense),4,Change,-1.697621
+Downside,Diluted EPS,Tax rate,5,Change,-0.022747
+Downside,Diluted EPS,Share count,6,Change,0.0
+Downside,Diluted EPS,FY2027 downside,99,End,17.652091
+Downside,Operating income by segment,FY2026 actual,0,Start,155237.0
+Downside,Operating income by segment,Productivity and Business Processes,10,Change,8580.48036
+Downside,Operating income by segment,Intelligent Cloud,11,Change,6767.90652
+Downside,Operating income by segment,More Personal Computing,12,Change,-2155.53064
+Downside,Operating income by segment,FY2027 downside,99,End,168429.85624

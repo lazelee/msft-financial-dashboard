@@ -1,0 +1,6 @@
+VersionKey,Version,Scenario,Version Type,Sort
+1,Actual,Actual,Actual,1
+2,Forecast - Base,Base,Forecast,2
+3,Forecast - Upside,Upside,Forecast,3
+4,Forecast - Downside,Downside,Forecast,4
+5,"Plan (model, prior year)",Plan,Plan,5

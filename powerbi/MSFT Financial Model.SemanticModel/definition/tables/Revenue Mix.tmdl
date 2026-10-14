@@ -1,0 +1,49 @@
+/// Revenue by product line, revenue type and geography (actuals), $M. Each breakdown sums to total revenue.
+table 'Revenue Mix'
+	lineageTag: 277df4ce-4b28-5d0e-91ed-659eac191358
+
+	column PeriodKey
+		dataType: int64
+		isHidden
+		lineageTag: 3860608b-9cea-57f3-b0eb-2b43e2cef3d7
+		summarizeBy: none
+		sourceColumn: PeriodKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Breakdown
+		dataType: string
+		lineageTag: 96bcf32f-0308-5272-9b59-0eef7b6f99cb
+		summarizeBy: none
+		sourceColumn: Breakdown
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 60976e1b-f231-555f-868c-db9ec8519efb
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		formatString: #,##0
+		isHidden
+		lineageTag: ba6d5aeb-4aa6-5ebf-9c87-ca36a2b0cde6
+		summarizeBy: none
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Revenue Mix' = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_revenue_mix.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"PeriodKey", Int64.Type}, {"Breakdown", type text}, {"Item", type text}, {"Amount", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

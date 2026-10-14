@@ -1,0 +1,9 @@
+.cache/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.DS_Store
+# Power BI local files (per-user settings and data cache)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

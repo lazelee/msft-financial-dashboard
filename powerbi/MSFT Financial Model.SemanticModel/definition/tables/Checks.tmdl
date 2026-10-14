@@ -1,0 +1,73 @@
+/// Every reconciliation the pipeline ran: extracted lines vs reported subtotals, breakdowns vs revenue.
+table Checks
+	lineageTag: 9a6d8451-fd07-554c-9bc6-076a63b15c02
+
+	column Area
+		dataType: string
+		lineageTag: b67417c0-5ef2-59d6-903d-6130f7e51e8f
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period
+		dataType: string
+		lineageTag: 2031d98e-f7ac-5ae4-8404-6637c4e17557
+		summarizeBy: none
+		sourceColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column Check
+		dataType: string
+		lineageTag: 7b5bf8c8-1fd1-5db3-9681-3d6a94882967
+		summarizeBy: none
+		sourceColumn: Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column Computed
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: de2ababf-4c11-5723-8481-0f984de2771d
+		summarizeBy: none
+		sourceColumn: Computed
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reported
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: 41b85194-75eb-5d3f-a2a9-d604656487d5
+		summarizeBy: none
+		sourceColumn: Reported
+
+		annotation SummarizationSetBy = Automatic
+
+	column Difference
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: ca30e9a1-77cd-5f23-ad02-e81ea43db7bc
+		summarizeBy: none
+		sourceColumn: Difference
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 2fb6f73d-ae00-5b2d-ae7b-7b9c5dde83eb
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Checks = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_checks.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"Area", type text}, {"Period", type text}, {"Check", type text}, {"Computed", type number}, {"Reported", type number}, {"Difference", type number}, {"Status", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

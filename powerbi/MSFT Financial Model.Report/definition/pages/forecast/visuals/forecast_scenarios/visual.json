@@ -1,0 +1,170 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "forecast_scenarios",
+  "position": {
+    "x": 24,
+    "y": 472,
+    "z": 14000,
+    "width": 520,
+    "height": 232,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenario"
+                    }
+                  },
+                  "Property": "Scenario"
+                }
+              },
+              "queryRef": "Scenario.Scenario",
+              "nativeQueryRef": "Scenario"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Scenario"
+                    }
+                  },
+                  "Property": "Probability"
+                }
+              },
+              "queryRef": "Scenario.Probability",
+              "nativeQueryRef": "Probability",
+              "displayName": "Probability"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures"
+                    }
+                  },
+                  "Property": "NY Revenue"
+                }
+              },
+              "queryRef": "Measures.NY Revenue",
+              "nativeQueryRef": "NY Revenue",
+              "displayName": "FY27E revenue"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures"
+                    }
+                  },
+                  "Property": "NY Operating Margin %"
+                }
+              },
+              "queryRef": "Measures.NY Operating Margin %",
+              "nativeQueryRef": "NY Operating Margin %",
+              "displayName": "FY27E op. margin"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures"
+                    }
+                  },
+                  "Property": "NY Diluted EPS"
+                }
+              },
+              "queryRef": "Measures.NY Diluted EPS",
+              "nativeQueryRef": "NY Diluted EPS",
+              "displayName": "FY27E EPS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures"
+                    }
+                  },
+                  "Property": "Y3 Diluted EPS"
+                }
+              },
+              "queryRef": "Measures.Y3 Diluted EPS",
+              "nativeQueryRef": "Y3 Diluted EPS",
+              "displayName": "FY29E EPS"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Scenario"
+                  }
+                },
+                "Property": "Scenario"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Scenarios side by side'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11.0D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F2328'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

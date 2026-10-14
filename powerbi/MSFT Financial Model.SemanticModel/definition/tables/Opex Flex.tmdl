@@ -1,0 +1,16 @@
+/// What-if: change to forecast operating expenses (−10% to +10%).
+table 'Opex Flex'
+	lineageTag: c5438978-da8a-5bd2-b423-911ee3e28390
+
+	column 'Opex Flex'
+		dataType: double
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 2e05b6c9-9f0f-5632-a56d-4b762bd73b1f
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition 'Opex Flex' = calculated
+		mode: import
+		source =
+				GENERATESERIES ( -0.10, 0.10, 0.01 )
+

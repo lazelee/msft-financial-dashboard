@@ -1,0 +1,101 @@
+/// One-year-ahead forecasts from each year since FY2013 vs what happened, model and naive.
+table Backtest
+	lineageTag: b1ceb65c-5f70-5d27-8086-f61786dfb3e5
+
+	column 'Origin Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 450c7578-be98-536f-8170-07a89a660488
+		summarizeBy: none
+		sourceColumn: Origin Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: ee66152e-f6e0-5696-880a-6a0368139358
+		summarizeBy: none
+		sourceColumn: Target Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Metric
+		dataType: string
+		lineageTag: d3341499-b126-59b1-9e48-097e003f35ff
+		summarizeBy: none
+		sourceColumn: Metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column Actual
+		dataType: double
+		formatString: #,##0.00
+		lineageTag: f11f3f9e-afcb-5efc-a9bc-d2da3093167e
+		summarizeBy: none
+		sourceColumn: Actual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Model
+		dataType: double
+		formatString: #,##0.00
+		lineageTag: 239eaab7-5995-54bb-b2ed-c6b574ff8502
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column Naive
+		dataType: double
+		formatString: #,##0.00
+		lineageTag: ba363f80-2c45-5636-be98-475980c4c0a8
+		summarizeBy: none
+		sourceColumn: Naive
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Model Error %'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 19e44fb9-8c37-5fc2-aa62-7d5b4524a85e
+		summarizeBy: none
+		sourceColumn: Model Error %
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Naive Error %'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: e89978f9-df46-5e77-b8b3-d8e39c0702ef
+		summarizeBy: none
+		sourceColumn: Naive Error %
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'One-off Year'
+		dataType: boolean
+		lineageTag: 346465a8-6be5-5ca1-8e57-23d011590fe3
+		summarizeBy: none
+		sourceColumn: One-off Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'One-off Reason'
+		dataType: string
+		lineageTag: dc7f4c73-d2aa-55c1-a04f-9d4254aa44fa
+		summarizeBy: none
+		sourceColumn: One-off Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Backtest = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_backtest.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"Origin Year", Int64.Type}, {"Target Year", Int64.Type}, {"Metric", type text}, {"Actual", type number}, {"Model", type number}, {"Naive", type number}, {"Model Error %", type number}, {"Naive Error %", type number}, {"One-off Year", type logical}, {"One-off Reason", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

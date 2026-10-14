@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "sensitivity_notes",
+  "position": {
+    "x": 856,
+    "y": 88,
+    "z": 4000,
+    "width": 400,
+    "height": 616,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Each 1pp of extra revenue growth in every segment adds roughly 1% to EPS once a quarter of it is spent on opex; each 100bp of operating margin is worth about 2%. Margin matters more than growth at Microsoft's scale, which is why Intelligent Cloud gross margin (AI depreciation) is the driver to watch.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "10pt",
+                      "color": "#5B6470"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "MSFT Financial Model"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5b8f0c1e-6c0e-4c55-9b7a-3d1e0f6a2c41"
+  }
+}

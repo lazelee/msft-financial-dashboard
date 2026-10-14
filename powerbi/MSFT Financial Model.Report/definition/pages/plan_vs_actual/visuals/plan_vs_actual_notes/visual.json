@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "plan_vs_actual_notes",
+  "position": {
+    "x": 756,
+    "y": 304,
+    "z": 4000,
+    "width": 500,
+    "height": 400,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "How to read this: the plan holds each segment's gross margin, fades revenue growth toward its long-run rate, and grows opex at last year's pace. FY2026 beat on revenue because Intelligent Cloud grew far faster than any fade rule expects, but missed on Intelligent Cloud margin as AI infrastructure depreciation came through cost of revenue. Other income was a one-off gain the plan couldn't anticipate.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "10pt",
+                      "color": "#5B6470"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

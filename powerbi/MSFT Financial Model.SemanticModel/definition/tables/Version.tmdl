@@ -1,0 +1,57 @@
+/// Actuals, the three forecast scenarios, and the model-rebuilt plan for the last actual year.
+table Version
+	lineageTag: 06305019-805b-5668-bcbc-e1003a23db64
+
+	column VersionKey
+		dataType: int64
+		isHidden
+		lineageTag: 2de21fd9-92c5-59dc-b96f-3953e88c09b6
+		summarizeBy: none
+		sourceColumn: VersionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Version
+		dataType: string
+		lineageTag: 858c2a3f-b905-5cf5-8906-945214b6804a
+		summarizeBy: none
+		sourceColumn: Version
+		sortByColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Scenario
+		dataType: string
+		lineageTag: 220cac54-a56f-55d7-9f59-080e57afe5b4
+		summarizeBy: none
+		sourceColumn: Scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Version Type'
+		dataType: string
+		lineageTag: 8db3f1de-5f22-5799-a210-abd07679c8d1
+		summarizeBy: none
+		sourceColumn: Version Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: 2358a6ab-df84-5a60-8689-b5b06197b562
+		summarizeBy: none
+		sourceColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Version = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("dim_version.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"VersionKey", Int64.Type}, {"Version", type text}, {"Scenario", type text}, {"Version Type", type text}, {"Sort", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

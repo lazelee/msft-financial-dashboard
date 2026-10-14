@@ -1,0 +1,59 @@
+/// Segment revenue, cost of revenue, operating expenses and operating income, $M.
+table 'Segment P&L'
+	lineageTag: 9ac51431-6cb7-5b0f-bdcf-b7982697363f
+
+	column PeriodKey
+		dataType: int64
+		isHidden
+		lineageTag: 17ba59ad-f227-5a3a-a94f-837ad541c9a2
+		summarizeBy: none
+		sourceColumn: PeriodKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentKey
+		dataType: int64
+		isHidden
+		lineageTag: 943197c1-45f5-5da4-9ed4-997cef2d1d45
+		summarizeBy: none
+		sourceColumn: SegmentKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column VersionKey
+		dataType: int64
+		isHidden
+		lineageTag: 0edf8a89-ef00-5115-aff1-975614bc0974
+		summarizeBy: none
+		sourceColumn: VersionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Metric
+		dataType: string
+		lineageTag: 58ea0ada-9c3d-5b07-b323-95c8061f1d8d
+		summarizeBy: none
+		sourceColumn: Metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		formatString: #,##0
+		isHidden
+		lineageTag: 7536d993-8fd4-53c3-b503-88a414d8f042
+		summarizeBy: none
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Segment P&L' = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_segment.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"PeriodKey", Int64.Type}, {"SegmentKey", Int64.Type}, {"VersionKey", Int64.Type}, {"Metric", type text}, {"Amount", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

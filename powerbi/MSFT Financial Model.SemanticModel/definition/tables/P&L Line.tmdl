@@ -1,0 +1,77 @@
+/// Rows of the income statement matrix, in order, with how to format and judge each.
+table 'P&L Line'
+	lineageTag: 87847028-0e13-57e3-bd69-1a1991a32f4d
+
+	column Line
+		dataType: string
+		lineageTag: e6e8aa5e-ef3d-5c8c-8e6d-41e27ad533b6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Line]
+		sortByColumn: Sort
+
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: a26e03f2-d00c-5b9a-bac4-15c09f1f7c3f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Sort]
+
+	column Format
+		dataType: string
+		isHidden
+		lineageTag: 87302b5c-438f-5c52-be61-ab84149bcc43
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Format]
+
+	column Favourable
+		dataType: int64
+		isHidden
+		lineageTag: 288322a8-5bb9-5763-beac-1a81e827ccdf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Favourable]
+
+	column Style
+		dataType: string
+		isHidden
+		lineageTag: 5bc5d3f1-f518-5c2a-bd0d-e010f6dafdea
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Style]
+
+	partition 'P&L Line' = calculated
+		mode: import
+		source =
+				DATATABLE (
+				    "Line", STRING,
+				    "Sort", INTEGER,
+				    "Format", STRING,
+				    "Favourable", INTEGER,
+				    "Style", STRING,
+				    {
+				        { "Revenue", 1, "M", 1, "Header" },
+				        { "Cost of revenue", 2, "M", 1, "Line" },
+				        { "Gross profit", 3, "M", 1, "Subtotal" },
+				        { "Gross margin %", 4, "P", 1, "Ratio" },
+				        { "Research and development", 5, "M", 1, "Line" },
+				        { "Sales and marketing", 6, "M", 1, "Line" },
+				        { "General and administrative", 7, "M", 1, "Line" },
+				        { "Impairment and restructuring", 8, "M", 1, "Line" },
+				        { "Total operating expenses", 9, "M", 1, "Subtotal" },
+				        { "Opex % of revenue", 10, "P", -1, "Ratio" },
+				        { "Operating income", 11, "M", 1, "Subtotal" },
+				        { "Operating margin %", 12, "P", 1, "Ratio" },
+				        { "Other income (expense), net", 13, "M", 1, "Line" },
+				        { "Income before income taxes", 14, "M", 1, "Subtotal" },
+				        { "Provision for income taxes", 15, "M", 1, "Line" },
+				        { "Effective tax rate", 16, "P", -1, "Ratio" },
+				        { "Net income", 17, "M", 1, "Total" },
+				        { "Net margin %", 18, "P", 1, "Ratio" },
+				        { "Diluted shares (M)", 19, "S", -1, "Line" },
+				        { "Diluted EPS", 20, "E", 1, "Total" }
+				    }
+				)
+

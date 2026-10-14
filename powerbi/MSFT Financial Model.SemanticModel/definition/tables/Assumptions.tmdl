@@ -1,0 +1,73 @@
+/// Forecast drivers by scenario, segment and year (from assumptions/assumptions.csv).
+table Assumptions
+	lineageTag: b7e5c4cd-2de1-5039-8f28-f413eba33d33
+
+	column Driver
+		dataType: string
+		lineageTag: 31b6a2a2-27c6-5448-bb55-0278e44e14fa
+		summarizeBy: none
+		sourceColumn: Driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: c85f096f-3cdf-5e34-993a-cd1060f40f53
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Scenario
+		dataType: string
+		lineageTag: 17f8f838-111e-54b1-8b5d-3752e61eb679
+		summarizeBy: none
+		sourceColumn: Scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 96503401-f03e-5660-ac90-f122d10f2e78
+		summarizeBy: none
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		formatString: #,##0.0
+		isHidden
+		lineageTag: 4d735fba-77b5-5760-bb7d-6d66b0431063
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		lineageTag: 9c4f277c-9fd8-50b5-bc92-9735110ae266
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rationale
+		dataType: string
+		lineageTag: 7978fb5c-db3c-5546-9429-ef06009dafbf
+		summarizeBy: none
+		sourceColumn: Rationale
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Assumptions = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_assumptions.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"Driver", type text}, {"Segment", type text}, {"Scenario", type text}, {"Fiscal Year", Int64.Type}, {"Value", type number}, {"Unit", type text}, {"Rationale", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

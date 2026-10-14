@@ -1,0 +1,225 @@
+PeriodKey,Breakdown,Item,Amount
+20251,Revenue type,Product,15272.0
+20241,Revenue type,Product,15535.0
+20251,Revenue type,Service and other,50313.0
+20241,Revenue type,Service and other,40982.0
+20251,Geography,United States,33913.0
+20241,Geography,United States,28812.0
+20251,Geography,Other countries,31672.0
+20241,Geography,Other countries,27705.0
+20251,Product line,Server products and cloud services,22155.0
+20241,Product line,Server products and cloud services,18062.0
+20251,Product line,Microsoft 365 Commercial products and cloud services,20449.0
+20241,Product line,Microsoft 365 Commercial products and cloud services,18044.0
+20251,Product line,Xbox,5621.0
+20241,Product line,Xbox,3919.0
+20251,Product line,Windows and devices,4329.0
+20241,Product line,Windows and devices,4340.0
+20251,Product line,LinkedIn,4292.0
+20241,Product line,LinkedIn,3913.0
+20251,Product line,Search advertising,3225.0
+20241,Product line,Search advertising,3018.0
+20251,Product line,Enterprise and partner services,1928.0
+20241,Product line,Enterprise and partner services,1944.0
+20251,Product line,Dynamics products and cloud services,1849.0
+20241,Product line,Dynamics products and cloud services,1626.0
+20251,Product line,Microsoft 365 Consumer products and cloud services,1727.0
+20241,Product line,Microsoft 365 Consumer products and cloud services,1643.0
+20251,Product line,Other products and services,10.0
+20241,Product line,Other products and services,8.0
+20252,Revenue type,Product,16219.0
+20242,Revenue type,Product,18941.0
+20252,Revenue type,Service and other,53413.0
+20242,Revenue type,Service and other,43079.0
+20252,Geography,United States,35537.0
+20242,Geography,United States,32295.0
+20252,Geography,Other countries,34095.0
+20242,Geography,Other countries,29725.0
+20252,Product line,Server products and cloud services,23641.0
+20242,Product line,Server products and cloud services,19597.0
+20252,Product line,Microsoft 365 Commercial products and cloud services,21117.0
+20242,Product line,Microsoft 365 Commercial products and cloud services,18321.0
+20252,Product line,Xbox,6581.0
+20242,Product line,Xbox,7111.0
+20252,Product line,LinkedIn,4587.0
+20242,Product line,LinkedIn,4195.0
+20252,Product line,Windows and devices,4512.0
+20242,Product line,Windows and devices,4363.0
+20252,Product line,Search advertising,3558.0
+20242,Product line,Search advertising,3168.0
+20252,Product line,Enterprise and partner services,1892.0
+20242,Product line,Enterprise and partner services,1917.0
+20252,Product line,Dynamics products and cloud services,1913.0
+20242,Product line,Dynamics products and cloud services,1659.0
+20252,Product line,Microsoft 365 Consumer products and cloud services,1821.0
+20242,Product line,Microsoft 365 Consumer products and cloud services,1679.0
+20252,Product line,Other products and services,10.0
+20242,Product line,Other products and services,10.0
+20253,Revenue type,Product,15319.0
+20243,Revenue type,Product,17080.0
+20253,Revenue type,Service and other,54747.0
+20243,Revenue type,Service and other,44778.0
+20253,Geography,United States,36084.0
+20243,Geography,United States,31437.0
+20253,Geography,Other countries,33982.0
+20243,Geography,Other countries,30421.0
+20253,Product line,Server products and cloud services,24761.0
+20243,Product line,Server products and cloud services,20266.0
+20253,Product line,Microsoft 365 Commercial products and cloud services,21883.0
+20243,Product line,Microsoft 365 Commercial products and cloud services,19712.0
+20253,Product line,Xbox,5721.0
+20243,Product line,Xbox,5451.0
+20253,Product line,LinkedIn,4311.0
+20243,Product line,LinkedIn,4013.0
+20253,Product line,Windows and devices,4144.0
+20243,Product line,Windows and devices,4098.0
+20253,Product line,Search advertising,3504.0
+20243,Product line,Search advertising,3055.0
+20253,Product line,Enterprise and partner services,1946.0
+20243,Product line,Enterprise and partner services,1861.0
+20253,Product line,Dynamics products and cloud services,1929.0
+20243,Product line,Dynamics products and cloud services,1740.0
+20253,Product line,Microsoft 365 Consumer products and cloud services,1821.0
+20243,Product line,Microsoft 365 Consumer products and cloud services,1648.0
+20253,Product line,Other products and services,46.0
+20243,Product line,Other products and services,14.0
+20250,Revenue type,Product,63946.0
+20240,Revenue type,Product,64773.0
+20230,Revenue type,Product,64699.0
+20250,Revenue type,Service and other,217778.0
+20240,Revenue type,Service and other,180349.0
+20230,Revenue type,Service and other,147216.0
+20250,Geography,United States,144546.0
+20240,Geography,United States,124704.0
+20230,Geography,United States,106744.0
+20250,Geography,Other countries,137178.0
+20240,Geography,Other countries,120418.0
+20230,Geography,Other countries,105171.0
+20250,Product line,Server products and cloud services,98435.0
+20240,Product line,Server products and cloud services,79828.0
+20230,Product line,Server products and cloud services,65007.0
+20250,Product line,Microsoft 365 Commercial products and cloud services,87767.0
+20240,Product line,Microsoft 365 Commercial products and cloud services,76969.0
+20230,Product line,Microsoft 365 Commercial products and cloud services,66949.0
+20250,Product line,Xbox,23455.0
+20240,Product line,Xbox,21503.0
+20230,Product line,Xbox,15466.0
+20250,Product line,LinkedIn,17812.0
+20240,Product line,LinkedIn,16372.0
+20230,Product line,LinkedIn,14989.0
+20250,Product line,Windows and devices,17314.0
+20240,Product line,Windows and devices,17026.0
+20230,Product line,Windows and devices,17147.0
+20250,Product line,Search advertising,13878.0
+20240,Product line,Search advertising,12306.0
+20230,Product line,Search advertising,12125.0
+20250,Product line,Dynamics products and cloud services,7827.0
+20240,Product line,Dynamics products and cloud services,6831.0
+20230,Product line,Dynamics products and cloud services,5796.0
+20250,Product line,Enterprise and partner services,7760.0
+20240,Product line,Enterprise and partner services,7594.0
+20230,Product line,Enterprise and partner services,7900.0
+20250,Product line,Microsoft 365 Consumer products and cloud services,7404.0
+20240,Product line,Microsoft 365 Consumer products and cloud services,6648.0
+20230,Product line,Microsoft 365 Consumer products and cloud services,6417.0
+20250,Product line,Other products and services,72.0
+20240,Product line,Other products and services,45.0
+20230,Product line,Other products and services,119.0
+20261,Revenue type,Product,15922.0
+20261,Revenue type,Service and other,61751.0
+20261,Geography,United States,40077.0
+20261,Geography,Other countries,37596.0
+20261,Product line,Server products and cloud services,28872.0
+20261,Product line,Microsoft 365 Commercial products and cloud services,23966.0
+20261,Product line,Xbox,5508.0
+20261,Product line,LinkedIn,4714.0
+20261,Product line,Windows and devices,4551.0
+20261,Product line,Search advertising,3697.0
+20261,Product line,Microsoft 365 Consumer products and cloud services,2204.0
+20261,Product line,Dynamics products and cloud services,2136.0
+20261,Product line,Enterprise and partner services,2022.0
+20261,Product line,Other products and services,3.0
+20262,Revenue type,Product,16451.0
+20262,Revenue type,Service and other,64822.0
+20262,Geography,United States,41410.0
+20262,Geography,Other countries,39863.0
+20262,Product line,Server products and cloud services,30865.0
+20262,Product line,Microsoft 365 Commercial products and cloud services,24524.0
+20262,Product line,Xbox,5958.0
+20262,Product line,LinkedIn,5082.0
+20262,Product line,Windows and devices,4479.0
+20262,Product line,Search advertising,3812.0
+20262,Product line,Microsoft 365 Consumer products and cloud services,2305.0
+20262,Product line,Dynamics products and cloud services,2204.0
+20262,Product line,Enterprise and partner services,2038.0
+20262,Product line,Other products and services,6.0
+20263,Revenue type,Product,15089.0
+20263,Revenue type,Service and other,67797.0
+20263,Geography,United States,42336.0
+20263,Geography,Other countries,40550.0
+20263,Product line,Server products and cloud services,32592.0
+20263,Product line,Microsoft 365 Commercial products and cloud services,25593.0
+20263,Product line,Xbox,5341.0
+20263,Product line,LinkedIn,4832.0
+20263,Product line,Windows and devices,4041.0
+20263,Product line,Search advertising,3808.0
+20263,Product line,Microsoft 365 Consumer products and cloud services,2297.0
+20263,Product line,Dynamics products and cloud services,2292.0
+20263,Product line,Enterprise and partner services,2087.0
+20263,Product line,Other products and services,3.0
+20260,Revenue type,Product,64696.0
+20260,Revenue type,Service and other,267143.0
+20260,Geography,United States,170794.0
+20260,Geography,Other countries,161045.0
+20260,Product line,Server products and cloud services,129425.0
+20260,Product line,Microsoft 365 Commercial products and cloud services,101997.0
+20260,Product line,Xbox,21790.0
+20260,Product line,LinkedIn,19817.0
+20260,Product line,Windows and devices,17084.0
+20260,Product line,Search advertising,15176.0
+20260,Product line,Microsoft 365 Consumer products and cloud services,9175.0
+20260,Product line,Dynamics products and cloud services,9006.0
+20260,Product line,Enterprise and partner services,8260.0
+20260,Product line,Other products and services,109.0
+20254,Revenue type,Product,17136.0
+20244,Revenue type,Product,13217.0
+20254,Revenue type,Service and other,59305.0
+20244,Revenue type,Service and other,51510.0
+20254,Geography,United States,39012.0
+20244,Geography,United States,32160.0
+20254,Geography,Other countries,37429.0
+20244,Geography,Other countries,32567.0
+20254,Product line,Server products and cloud services,27878.0
+20244,Product line,Server products and cloud services,21903.0
+20254,Product line,Microsoft 365 Commercial products and cloud services,24318.0
+20244,Product line,Microsoft 365 Commercial products and cloud services,20892.0
+20254,Product line,Xbox,5532.0
+20244,Product line,Xbox,5022.0
+20254,Product line,Windows and devices,4329.0
+20244,Product line,Windows and devices,4225.0
+20254,Product line,LinkedIn,4622.0
+20244,Product line,LinkedIn,4251.0
+20254,Product line,Search advertising,3591.0
+20244,Product line,Search advertising,3065.0
+20254,Product line,Enterprise and partner services,1994.0
+20244,Product line,Enterprise and partner services,1872.0
+20254,Product line,Dynamics products and cloud services,2136.0
+20244,Product line,Dynamics products and cloud services,1806.0
+20254,Product line,Microsoft 365 Consumer products and cloud services,2035.0
+20244,Product line,Microsoft 365 Consumer products and cloud services,1678.0
+20254,Product line,Other products and services,6.0
+20244,Product line,Other products and services,13.0
+20264,Revenue type,Product,17234.0
+20264,Revenue type,Service and other,72773.0
+20264,Geography,United States,46971.0
+20264,Geography,Other countries,43036.0
+20264,Product line,Server products and cloud services,37096.0
+20264,Product line,Microsoft 365 Commercial products and cloud services,27914.0
+20264,Product line,Xbox,4983.0
+20264,Product line,LinkedIn,5189.0
+20264,Product line,Windows and devices,4013.0
+20264,Product line,Search advertising,3859.0
+20264,Product line,Microsoft 365 Consumer products and cloud services,2369.0
+20264,Product line,Dynamics products and cloud services,2374.0
+20264,Product line,Enterprise and partner services,2113.0
+20264,Product line,Other products and services,97.0

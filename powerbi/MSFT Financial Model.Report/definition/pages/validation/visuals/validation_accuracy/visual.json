@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "validation_accuracy",
+  "position": {
+    "x": 796,
+    "y": 180,
+    "z": 9000,
+    "width": 460,
+    "height": 250,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest"
+                    }
+                  },
+                  "Property": "Metric"
+                }
+              },
+              "queryRef": "Backtest.Metric",
+              "nativeQueryRef": "Metric"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures"
+                    }
+                  },
+                  "Property": "Model MAPE ex One-offs"
+                }
+              },
+              "queryRef": "Measures.Model MAPE ex One-offs",
+              "nativeQueryRef": "Model MAPE ex One-offs",
+              "displayName": "Model"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures"
+                    }
+                  },
+                  "Property": "Naive MAPE ex One-offs"
+                }
+              },
+              "queryRef": "Measures.Naive MAPE ex One-offs",
+              "nativeQueryRef": "Naive MAPE ex One-offs",
+              "displayName": "Naive"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Average error excluding one-off years: model vs naive'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11.0D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F2328'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

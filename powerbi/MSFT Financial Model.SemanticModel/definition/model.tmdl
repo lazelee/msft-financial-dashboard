@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_ProTooling = ["TMDL-Extension"]
+
+ref table Period
+ref table Account
+ref table Version
+ref table Scenario
+ref table Segment
+ref table 'P&L'
+ref table 'Segment P&L'
+ref table KPI
+ref table 'Revenue Mix'
+ref table Bridge
+ref table Sensitivity
+ref table Backtest
+ref table Assumptions
+ref table Checks
+ref table 'P&L Line'
+ref table 'Revenue Growth Flex'
+ref table 'Opex Flex'
+ref table Measures

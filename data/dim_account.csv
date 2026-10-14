@@ -1,0 +1,9 @@
+AccountKey,Code,Account,Line Group,Sign,Sort
+1,REV,Revenue,Revenue,1,10
+2,COGS,Cost of revenue,Cost of revenue,-1,20
+3,RD,Research and development,Operating expenses,-1,30
+4,SM,Sales and marketing,Operating expenses,-1,40
+5,GA,General and administrative,Operating expenses,-1,50
+6,IMP,"Impairment, integration and restructuring",Operating expenses,-1,60
+7,OIE,"Other income (expense), net",Other income (expense),1,70
+8,TAX,Provision for income taxes,Income taxes,-1,80

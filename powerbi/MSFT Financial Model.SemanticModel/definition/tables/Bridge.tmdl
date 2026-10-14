@@ -1,0 +1,66 @@
+/// Exact after-tax bridges from the last actual year to the first forecast year.
+table Bridge
+	lineageTag: 2e864d4d-7d36-55b9-885d-0d8f4a313d05
+
+	column Scenario
+		dataType: string
+		lineageTag: 2dc365da-ddb6-5cdc-b43b-5e3e72eaaf53
+		summarizeBy: none
+		sourceColumn: Scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bridge
+		dataType: string
+		lineageTag: d89c93ca-3e83-57a7-af40-4aad1afb9169
+		summarizeBy: none
+		sourceColumn: Bridge
+
+		annotation SummarizationSetBy = Automatic
+
+	column Step
+		dataType: string
+		lineageTag: 039a8487-21e9-5e0f-a9d8-f92c99f7f94a
+		summarizeBy: none
+		sourceColumn: Step
+		sortByColumn: 'Step Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Step Order'
+		dataType: int64
+		isHidden
+		lineageTag: 48d4dc14-ec28-54ae-ae58-477abd8fd93d
+		summarizeBy: none
+		sourceColumn: Step Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Step Type'
+		dataType: string
+		lineageTag: 1646aa42-7817-5405-8937-ca745691144b
+		summarizeBy: none
+		sourceColumn: Step Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		formatString: #,##0.00
+		isHidden
+		lineageTag: 4ad9abda-8a76-51d4-8b72-3e3c63e87bff
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Bridge = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_bridge.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"Scenario", type text}, {"Bridge", type text}, {"Step", type text}, {"Step Order", Int64.Type}, {"Step Type", type text}, {"Value", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

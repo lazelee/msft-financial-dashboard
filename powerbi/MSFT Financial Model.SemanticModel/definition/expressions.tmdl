@@ -1,0 +1,21 @@
+/// Where the CSVs live: a URL ending in / (default: this repo on GitHub) or a local folder path ending in \
+expression DataFolder = "https://raw.githubusercontent.com/lazelee/msft-financial-dashboard/main/data/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6fc32de9-0cb8-5283-a8f6-d0b4088b1eca
+
+	annotation PBI_ResultType = Text
+
+/// Load one CSV from DataFolder (web or local) as a table with promoted headers.
+expression LoadCsv =
+		(fileName as text) as table =>
+		let
+		    Raw =
+		        if Text.StartsWith(DataFolder, "http")
+		        then Web.Contents(DataFolder, [RelativePath = fileName])
+		        else File.Contents(DataFolder & fileName),
+		    Parsed = Csv.Document(Raw, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+		    Promoted = Table.PromoteHeaders(Parsed, [PromoteAllScalars = true])
+		in
+		    Promoted
+	lineageTag: 23feb301-abe3-5f7d-93ae-8411d0602fd3
+
+	annotation PBI_ResultType = Function

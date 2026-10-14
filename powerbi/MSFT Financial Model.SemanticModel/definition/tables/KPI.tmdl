@@ -1,0 +1,50 @@
+/// Per-share, cash-flow and Microsoft Cloud metrics. $M except EPS ($) and shares (M).
+table KPI
+	lineageTag: 7b11c94a-cb54-5b34-879b-00f7562ccf80
+
+	column PeriodKey
+		dataType: int64
+		isHidden
+		lineageTag: 5c99318d-e761-5f11-b050-d2b8f05f0780
+		summarizeBy: none
+		sourceColumn: PeriodKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column VersionKey
+		dataType: int64
+		isHidden
+		lineageTag: e4f2c681-659f-5604-85a9-71b2e78bc01a
+		summarizeBy: none
+		sourceColumn: VersionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Metric
+		dataType: string
+		lineageTag: 1eac1afb-c36d-59d0-8ed9-bd3286591585
+		summarizeBy: none
+		sourceColumn: Metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		formatString: #,##0.00
+		isHidden
+		lineageTag: 3416c222-3a8c-534f-8d90-1d528255bedb
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition KPI = m
+		mode: import
+		source =
+				let
+				    Source = LoadCsv("fact_kpi.csv"),
+				    Typed = Table.TransformColumnTypes(Source, {{"PeriodKey", Int64.Type}, {"VersionKey", Int64.Type}, {"Metric", type text}, {"Value", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
