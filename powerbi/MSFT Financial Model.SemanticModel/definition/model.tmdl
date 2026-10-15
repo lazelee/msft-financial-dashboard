@@ -16,7 +16,7 @@ ref table Scenario
 ref table Segment
 ref table 'P&L'
 ref table 'Segment P&L'
-ref table KPI
+ref table 'Financial Metrics'
 ref table 'Revenue Mix'
 ref table Bridge
 ref table Sensitivity

@@ -117,7 +117,7 @@ def test_dax_references_resolve():
     problems = []
     texts = [(m[0], m[1]) for m in bm.MEASURES] + [(f"format:{k}", v) for k, v in bm.DYNAMIC_FORMATS.items()]
     for name, dax in texts:
-        code = re.sub(r'"[^"]*"', '""', dax)
+        code = re.sub(r'"[^"]*"', '""', bm.quote_tables(dax))  # check the DAX as generated
         for a, b, col in re.findall(r"(?:'([^']+)'|\b([A-Za-z_][A-Za-z_]*))\[([^\]]+)\]", code):
             table = a or b
             if table not in cols:
@@ -198,3 +198,11 @@ def test_measure_names_are_unique_across_columns_and_tables():
     clashes = [f"[{m}] vs {taken[m.lower()]}" for m in measures if m.lower() in taken]
     assert not clashes, clashes
     assert len({m.lower() for m in measures}) == len(measures), "duplicate measure names"
+
+
+def test_every_dax_table_reference_is_quoted():
+    """Unquoted names can collide with DAX/engine keywords (KPI, Date, ...); the generator quotes them all."""
+    text = (ROOT / "powerbi" / f"{bm.NAME}.SemanticModel" / "definition" / "tables" / f"{bm.MEASURES_TABLE}.tmdl").read_text()
+    code = re.sub(r'"[^"]*"', '""', text)
+    unquoted = sorted(set(re.findall(r"(?<![\w'\]])([A-Za-z_][\w ]*?)\[", code)) - {""})
+    assert not unquoted, unquoted

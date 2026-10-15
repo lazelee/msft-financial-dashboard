@@ -22,12 +22,12 @@ relationship b508ea43-483a-5957-8c73-6f5b8d08acb6
 	fromColumn: 'Segment P&L'.VersionKey
 	toColumn: Version.VersionKey
 
-relationship 2a9e559c-d80a-5a77-9dbc-6d77af33d087
-	fromColumn: KPI.PeriodKey
+relationship 6c3f528b-c4ec-5374-bf84-85b5c33f1377
+	fromColumn: 'Financial Metrics'.PeriodKey
 	toColumn: Period.PeriodKey
 
-relationship 9cd08b1a-d9f3-5019-a6c6-0010f556d663
-	fromColumn: KPI.VersionKey
+relationship 21dfe275-a7e5-54b9-bd66-e604ac3c92e1
+	fromColumn: 'Financial Metrics'.VersionKey
 	toColumn: Version.VersionKey
 
 relationship 3ea49fc2-c55a-53fd-9dc1-d81c0d8ececf

@@ -12,6 +12,7 @@ folder (set the DataFolder parameter). Measures implement the P&L logic in DAX:
   - plan vs actual variance with favourable/unfavourable flags
 """
 import csv
+import re
 import shutil
 import uuid
 from pathlib import Path
@@ -62,7 +63,7 @@ CSV_TABLES = [
         "PeriodKey": (INT, {"hidden": True}), "SegmentKey": (INT, {"hidden": True}), "VersionKey": (INT, {"hidden": True}),
         "Metric": (TEXT, {}), "Amount": (DEC, {"hidden": True, "format": "#,##0"}),
     }),
-    ("KPI", "fact_kpi", "Per-share, cash-flow and Microsoft Cloud metrics. $M except EPS ($) and shares (M).", {
+    ("Financial Metrics", "fact_kpi", "Per-share, cash-flow and Microsoft Cloud metrics. $M except EPS ($) and shares (M).", {
         "PeriodKey": (INT, {"hidden": True}), "VersionKey": (INT, {"hidden": True}), "Metric": (TEXT, {}),
         "Value": (DEC, {"hidden": True, "format": "#,##0.00"}),
     }),
@@ -102,7 +103,7 @@ RELATIONSHIPS = [  # from (many) → to (one)
     ("P&L", "VersionKey", "Version", "VersionKey"),
     ("Segment P&L", "PeriodKey", "Period", "PeriodKey"), ("Segment P&L", "SegmentKey", "Segment", "SegmentKey"),
     ("Segment P&L", "VersionKey", "Version", "VersionKey"),
-    ("KPI", "PeriodKey", "Period", "PeriodKey"), ("KPI", "VersionKey", "Version", "VersionKey"),
+    ("Financial Metrics", "PeriodKey", "Period", "PeriodKey"), ("Financial Metrics", "VersionKey", "Version", "VersionKey"),
     ("Revenue Mix", "PeriodKey", "Period", "PeriodKey"),
     ("Bridge", "Scenario", "Scenario", "Scenario"), ("Assumptions", "Scenario", "Scenario", "Scenario"),
 ]
@@ -192,24 +193,24 @@ IF ( [_Is Forecast] = 1, POWER ( 1 + [Revenue Flex Value], MAX ( Period[Years Fr
     # ---- per share and cash ----
     ("_KPI", """
 VAR _scenario = [Selected Scenario]
-VAR _actual = CALCULATE ( SUM ( KPI[Value] ), Version[Version Type] = "Actual" )
+VAR _actual = CALCULATE ( SUM ( Financial Metrics[Value] ), Version[Version Type] = "Actual" )
 RETURN
     IF (
         ISFILTERED ( Version ),
-        SUM ( KPI[Value] ),
-        IF ( NOT ISBLANK ( _actual ), _actual, CALCULATE ( SUM ( KPI[Value] ), Version[Scenario] = _scenario ) )
+        SUM ( Financial Metrics[Value] ),
+        IF ( NOT ISBLANK ( _actual ), _actual, CALCULATE ( SUM ( Financial Metrics[Value] ), Version[Scenario] = _scenario ) )
     )""", "#,##0.00", "Engine", "KPI value with the same actual-else-scenario logic as _Amount."),
-    ("Diluted Shares (M)", 'CALCULATE ( [_KPI], KPI[Metric] = "Diluted shares (M)" )', "#,##0", "Per share and cash",
+    ("Diluted Shares (M)", 'CALCULATE ( [_KPI], Financial Metrics[Metric] = "Diluted shares (M)" )', "#,##0", "Per share and cash",
      "Weighted average diluted shares, millions."),
     ("Diluted EPS", "DIVIDE ( [Net Income], [Diluted Shares (M)] )", EPS, "Per share and cash",
      "Net income ÷ diluted shares (matches reported EPS within rounding)."),
-    ("Operating Cash Flow", 'CALCULATE ( [_KPI], KPI[Metric] = "Operating cash flow" )', M, "Per share and cash", None),
-    ("Capital Expenditures", 'CALCULATE ( [_KPI], KPI[Metric] = "Capital expenditures" )', M, "Per share and cash",
+    ("Operating Cash Flow", 'CALCULATE ( [_KPI], Financial Metrics[Metric] = "Operating cash flow" )', M, "Per share and cash", None),
+    ("Capital Expenditures", 'CALCULATE ( [_KPI], Financial Metrics[Metric] = "Capital expenditures" )', M, "Per share and cash",
      "Additions to property and equipment."),
     ("Free Cash Flow", "[Operating Cash Flow] - [Capital Expenditures]", M, "Per share and cash", None),
     ("Capex % of Revenue", "DIVIDE ( [Capital Expenditures], [Revenue] )", PCT, "Per share and cash", None),
     ("FCF Margin %", "DIVIDE ( [Free Cash Flow], [Revenue] )", PCT, "Per share and cash", None),
-    ("Microsoft Cloud Revenue", 'CALCULATE ( [_KPI], KPI[Metric] = "Microsoft Cloud revenue" )', M, "Per share and cash",
+    ("Microsoft Cloud Revenue", 'CALCULATE ( [_KPI], Financial Metrics[Metric] = "Microsoft Cloud revenue" )', M, "Per share and cash",
      "Microsoft Cloud (overlaps segments; not additive with them)."),
     ("Microsoft Cloud % of Revenue", "DIVIDE ( [Microsoft Cloud Revenue], [Revenue] )", PCT, "Per share and cash", None),
 
@@ -453,12 +454,21 @@ def write_calculated(name, description, dax, columns, hidden=False):
     return "\n".join(out) + "\n"
 
 
+def quote_tables(dax):
+    """'Table'[Column] for every model table, quoted or not, so names can't collide with DAX keywords."""
+    names = sorted([t[0] for t in CSV_TABLES] + ["P&L Line", "Revenue Growth Flex", "Opex Flex", MEASURES_TABLE],
+                   key=len, reverse=True)
+    for name in names:
+        dax = re.sub(r"(?<![\w'])" + re.escape(name) + r"(?=\[)", f"'{name}'", dax)
+    return dax
+
+
 def write_measures_table():
     out = ["/// All model measures, grouped in display folders.", f"table {MEASURES_TABLE}", f"{T}lineageTag: {lineage(MEASURES_TABLE)}", ""]
     for name, dax, fmt, folder, desc in MEASURES:
         if desc:
             out.append(f"{T}/// {desc}")
-        body = dax.strip("\n")
+        body = quote_tables(dax.strip("\n"))
         if "\n" in body:
             out.append(f"{T}measure {q(name)} =")
             out.append(expr_block(body, 3))
@@ -473,7 +483,7 @@ def write_measures_table():
         if name in DYNAMIC_FORMATS:
             out.append("")
             out.append(f"{T*2}formatStringDefinition =")
-            out.append(expr_block(DYNAMIC_FORMATS[name], 4))
+            out.append(expr_block(quote_tables(DYNAMIC_FORMATS[name]), 4))
         out.append("")
     out.append(f"{T}column Placeholder")
     out.append(f"{T*2}dataType: string")

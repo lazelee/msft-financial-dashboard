@@ -1,11 +1,11 @@
 /// Per-share, cash-flow and Microsoft Cloud metrics. $M except EPS ($) and shares (M).
-table KPI
-	lineageTag: 7b11c94a-cb54-5b34-879b-00f7562ccf80
+table 'Financial Metrics'
+	lineageTag: 0429bfa3-bb82-5d0a-9336-d15db4a778da
 
 	column PeriodKey
 		dataType: int64
 		isHidden
-		lineageTag: 5c99318d-e761-5f11-b050-d2b8f05f0780
+		lineageTag: 73bb46b8-eac1-50d9-b1b2-22b50913986a
 		summarizeBy: none
 		sourceColumn: PeriodKey
 
@@ -14,7 +14,7 @@ table KPI
 	column VersionKey
 		dataType: int64
 		isHidden
-		lineageTag: e4f2c681-659f-5604-85a9-71b2e78bc01a
+		lineageTag: a62f1edf-a0b6-5066-bb00-764134637c16
 		summarizeBy: none
 		sourceColumn: VersionKey
 
@@ -22,7 +22,7 @@ table KPI
 
 	column Metric
 		dataType: string
-		lineageTag: 1eac1afb-c36d-59d0-8ed9-bd3286591585
+		lineageTag: 2df2fa6c-863f-5c41-8e43-92860296a86e
 		summarizeBy: none
 		sourceColumn: Metric
 
@@ -32,13 +32,13 @@ table KPI
 		dataType: double
 		formatString: #,##0.00
 		isHidden
-		lineageTag: 3416c222-3a8c-534f-8d90-1d528255bedb
+		lineageTag: d56151df-a86d-5ef7-8b21-86f3d1f5afc1
 		summarizeBy: none
 		sourceColumn: Value
 
 		annotation SummarizationSetBy = Automatic
 
-	partition KPI = m
+	partition 'Financial Metrics' = m
 		mode: import
 		source =
 				let
