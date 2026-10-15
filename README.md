@@ -102,14 +102,6 @@ docs/methodology.md             sources, reconciliation, formulas, validation, l
 tests/                          data, model and Power BI project tests
 ```
 
-## What changed from the first version
-
-The first version summed every revenue breakdown that Microsoft reports (segments, product lines,
-geography, Microsoft Cloud) into one total. That showed FY2026 revenue as $1.9 trillion and gross
-margin as 11.9%; the actual figures are $331.8B and 67.9%. It also labelled pretax income as a tax
-and forced a $10.7B other-income *gain* negative. This version keeps each breakdown separate and
-reconciles every line to the reported totals before anything reaches the report.
-
 ## Notes
 
 - Data: SEC EDGAR XBRL (Microsoft 10-K and 10-Q filings).
