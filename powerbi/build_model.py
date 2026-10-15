@@ -76,8 +76,8 @@ CSV_TABLES = [
     }),
     ("Sensitivity", "fact_sensitivity", "First forecast year diluted EPS (Base) across revenue growth and operating margin shifts.", {
         "Revenue Growth Delta (pp)": (INT, {"hidden": True}), "Operating Margin Delta (bp)": (INT, {"hidden": True}),
-        "Revenue": (DEC, {"hidden": True, "format": "#,##0"}), "Operating Margin": (DEC, {"hidden": True, "format": "0.0%"}),
-        "Net Income": (DEC, {"hidden": True, "format": "#,##0"}), "Diluted EPS": (DEC, {"hidden": True, "format": "$0.00"}),
+        "Revenue ($M)": (DEC, {"hidden": True, "format": "#,##0"}), "Operating Margin (%)": (DEC, {"hidden": True, "format": "0.0%"}),
+        "Net Income ($M)": (DEC, {"hidden": True, "format": "#,##0"}), "Diluted EPS ($)": (DEC, {"hidden": True, "format": "$0.00"}),
         "Revenue Growth Label": (TEXT, {"sortBy": "Revenue Growth Delta (pp)"}),
         "Operating Margin Label": (TEXT, {"sortBy": "Operating Margin Delta (bp)"}),
     }),
@@ -151,14 +151,14 @@ RETURN
      "Actuals where reported, otherwise the selected scenario. If a visual filters Version (e.g. Plan), that version is used as is."),
     ("_Is Forecast", "IF ( MAX ( Period[Years From Last Actual] ) > 0 && NOT ISFILTERED ( Version ), 1, 0 )", "0", "Engine",
      "1 for forecast periods (where flex parameters apply)."),
-    ("Revenue Flex", "SELECTEDVALUE ( 'Revenue Growth Flex'[Revenue Growth Flex], 0 )", PP, "Engine",
+    ("Revenue Flex Value", "SELECTEDVALUE ( 'Revenue Growth Flex'[Revenue Growth Flex], 0 )", PP, "Engine",
      "What-if: extra revenue growth per forecast year (compounding), cost of revenue moves with it."),
-    ("Opex Flex", "SELECTEDVALUE ( 'Opex Flex'[Opex Flex], 0 )", PP, "Engine",
+    ("Opex Flex Value", "SELECTEDVALUE ( 'Opex Flex'[Opex Flex], 0 )", PP, "Engine",
      "What-if: change to operating expenses in forecast years (costs don't flex with revenue: operating leverage)."),
     ("_Revenue Factor", """
-IF ( [_Is Forecast] = 1, POWER ( 1 + [Revenue Flex], MAX ( Period[Years From Last Actual] ) ), 1 )""", "0.000", "Engine",
+IF ( [_Is Forecast] = 1, POWER ( 1 + [Revenue Flex Value], MAX ( Period[Years From Last Actual] ) ), 1 )""", "0.000", "Engine",
      "Multiplier applied to forecast revenue and cost of revenue."),
-    ("_Opex Factor", "IF ( [_Is Forecast] = 1, 1 + [Opex Flex], 1 )", "0.000", "Engine", "Multiplier applied to forecast opex."),
+    ("_Opex Factor", "IF ( [_Is Forecast] = 1, 1 + [Opex Flex Value], 1 )", "0.000", "Engine", "Multiplier applied to forecast opex."),
     ("_Base Tax Rate", f"DIVIDE ( {line('TAX')}, {line('REV')} - {line('COGS')} - CALCULATE ( [_Amount], Account[Line Group] = \"Operating expenses\" ) + {line('OIE')} )",
      PCT, "Engine", "Effective tax rate of the underlying (unflexed) numbers; applied to flexed pretax income."),
 
@@ -331,9 +331,9 @@ RETURN SWITCH ( TRUE (), ISBLANK ( _v ), BLANK (), _v >= 0, "#1B7F3B", "#B3261E"
 
     # ---- bridges, sensitivity, validation ----
     ("Bridge Value", "SUM ( Bridge[Value] )", "#,##0.00", "Bridges", "Bridge step value ($M for net income / operating income, $ for EPS)."),
-    ("Sensitivity EPS", "SUM ( Sensitivity[Diluted EPS] )", EPS, "Sensitivity", None),
+    ("Sensitivity EPS", "SUM ( Sensitivity[Diluted EPS ($)] )", EPS, "Sensitivity", None),
     ("Sensitivity vs Base", """
-VAR _base = CALCULATE ( SUM ( Sensitivity[Diluted EPS] ), REMOVEFILTERS ( Sensitivity ), Sensitivity[Revenue Growth Delta (pp)] = 0, Sensitivity[Operating Margin Delta (bp)] = 0 )
+VAR _base = CALCULATE ( SUM ( Sensitivity[Diluted EPS ($)] ), REMOVEFILTERS ( Sensitivity ), Sensitivity[Revenue Growth Delta (pp)] = 0, Sensitivity[Operating Margin Delta (bp)] = 0 )
 RETURN DIVIDE ( [Sensitivity EPS], _base ) - 1""", PP, "Sensitivity", None),
     ("Sensitivity Color", """
 VAR _d = [Sensitivity vs Base]

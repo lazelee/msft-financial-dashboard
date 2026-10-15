@@ -36,26 +36,26 @@ table _Measures
 		lineageTag: 54c6f8a7-3a36-5a16-8d99-8e3b992e890c
 
 	/// What-if: extra revenue growth per forecast year (compounding), cost of revenue moves with it.
-	measure 'Revenue Flex' = SELECTEDVALUE ( 'Revenue Growth Flex'[Revenue Growth Flex], 0 )
+	measure 'Revenue Flex Value' = SELECTEDVALUE ( 'Revenue Growth Flex'[Revenue Growth Flex], 0 )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Engine
-		lineageTag: 5cd07d8c-6396-57d3-8ef8-191ecb1a17ea
+		lineageTag: 12c5dedc-517c-5de4-bf07-46dbd70c9d07
 
 	/// What-if: change to operating expenses in forecast years (costs don't flex with revenue: operating leverage).
-	measure 'Opex Flex' = SELECTEDVALUE ( 'Opex Flex'[Opex Flex], 0 )
+	measure 'Opex Flex Value' = SELECTEDVALUE ( 'Opex Flex'[Opex Flex], 0 )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Engine
-		lineageTag: de3dcd66-42dd-559e-a502-498ec12dff19
+		lineageTag: 46b76195-a4f7-5d63-9831-81e7a312b5f3
 
 	/// Multiplier applied to forecast revenue and cost of revenue.
-	measure '_Revenue Factor' = IF ( [_Is Forecast] = 1, POWER ( 1 + [Revenue Flex], MAX ( Period[Years From Last Actual] ) ), 1 )
+	measure '_Revenue Factor' = IF ( [_Is Forecast] = 1, POWER ( 1 + [Revenue Flex Value], MAX ( Period[Years From Last Actual] ) ), 1 )
 		formatString: 0.000
 		isHidden
 		displayFolder: Engine
 		lineageTag: ad615d6b-1d45-555e-9f2a-be226acb065d
 
 	/// Multiplier applied to forecast opex.
-	measure '_Opex Factor' = IF ( [_Is Forecast] = 1, 1 + [Opex Flex], 1 )
+	measure '_Opex Factor' = IF ( [_Is Forecast] = 1, 1 + [Opex Flex Value], 1 )
 		formatString: 0.000
 		isHidden
 		displayFolder: Engine
@@ -535,13 +535,13 @@ table _Measures
 		displayFolder: Bridges
 		lineageTag: 7d0545e5-ab73-5f0b-8cea-e917c0dc14c3
 
-	measure 'Sensitivity EPS' = SUM ( Sensitivity[Diluted EPS] )
+	measure 'Sensitivity EPS' = SUM ( Sensitivity[Diluted EPS ($)] )
 		formatString: $0.00;($0.00)
 		displayFolder: Sensitivity
 		lineageTag: 7aee703b-6499-5117-8364-3e5d1df192ed
 
 	measure 'Sensitivity vs Base' =
-			VAR _base = CALCULATE ( SUM ( Sensitivity[Diluted EPS] ), REMOVEFILTERS ( Sensitivity ), Sensitivity[Revenue Growth Delta (pp)] = 0, Sensitivity[Operating Margin Delta (bp)] = 0 )
+			VAR _base = CALCULATE ( SUM ( Sensitivity[Diluted EPS ($)] ), REMOVEFILTERS ( Sensitivity ), Sensitivity[Revenue Growth Delta (pp)] = 0, Sensitivity[Operating Margin Delta (bp)] = 0 )
 			RETURN DIVIDE ( [Sensitivity EPS], _base ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Sensitivity

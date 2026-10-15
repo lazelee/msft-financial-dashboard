@@ -141,11 +141,11 @@ def test_sensitivity_center_is_the_base_case():
     base_eps = summary(pl_by(2), 20270)["ni"] / shares[("2", "20270")]
     center = [r for r in rows("fact_sensitivity") if r["Revenue Growth Delta (pp)"] == "0" and r["Operating Margin Delta (bp)"] == "0"]
     assert len(center) == 1
-    assert float(center[0]["Diluted EPS"]) == pytest.approx(base_eps, abs=1e-5)  # CSVs keep 6 decimals
+    assert float(center[0]["Diluted EPS ($)"]) == pytest.approx(base_eps, abs=1e-5)  # CSVs keep 6 decimals
 
 
 def test_sensitivity_is_monotonic():
-    grid = {(int(r["Revenue Growth Delta (pp)"]), int(r["Operating Margin Delta (bp)"])): float(r["Diluted EPS"])
+    grid = {(int(r["Revenue Growth Delta (pp)"]), int(r["Operating Margin Delta (bp)"])): float(r["Diluted EPS ($)"])
             for r in rows("fact_sensitivity")}
     gs, ms = sorted({g for g, _ in grid}), sorted({m for _, m in grid})
     for m in ms:

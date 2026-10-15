@@ -198,8 +198,9 @@ def eps_sensitivity(base, actual_seg, actual_pl, actual_kpi, drivers, last_fy, f
             pbt = y["oi"] + y["rev"] * dm / 10000.0 + y["oie"]
             ni = pbt * (1 - etr)
             out.append({"Revenue Growth Delta (pp)": dg, "Operating Margin Delta (bp)": dm,
-                        "Revenue": y["rev"], "Operating Margin": (y["oi"] + y["rev"] * dm / 10000.0) / y["rev"],
-                        "Net Income": ni, "Diluted EPS": ni / shares})
+                        # Units in the names keep them distinct from the Power BI measures [Revenue] etc.
+                        "Revenue ($M)": y["rev"], "Operating Margin (%)": (y["oi"] + y["rev"] * dm / 10000.0) / y["rev"],
+                        "Net Income ($M)": ni, "Diluted EPS ($)": ni / shares})
     return out
 
 

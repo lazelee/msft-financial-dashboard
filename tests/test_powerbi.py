@@ -187,3 +187,14 @@ def test_conditional_formatting_selectors_point_at_real_measures():
             if table != bm.MEASURES_TABLE or name not in measures:
                 bad.append((path.parent.name, m))
     assert not bad, bad
+
+
+def test_measure_names_are_unique_across_columns_and_tables():
+    """Power BI errors on a measure named like any column or table in the model, and every measure
+    built on it then fails too (this broke the whole model once: [Revenue] vs Sensitivity[Revenue])."""
+    cols, measures = model_fields()
+    taken = {c.lower(): f"column {t}[{c}]" for t, cs in cols.items() for c in cs}
+    taken.update({t.lower(): f"table {t}" for t in cols})
+    clashes = [f"[{m}] vs {taken[m.lower()]}" for m in measures if m.lower() in taken]
+    assert not clashes, clashes
+    assert len({m.lower() for m in measures}) == len(measures), "duplicate measure names"

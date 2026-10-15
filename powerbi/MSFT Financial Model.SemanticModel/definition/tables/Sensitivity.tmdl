@@ -20,43 +20,43 @@ table Sensitivity
 
 		annotation SummarizationSetBy = Automatic
 
-	column Revenue
+	column 'Revenue ($M)'
 		dataType: double
 		formatString: #,##0
 		isHidden
-		lineageTag: a76b5bbd-c1ea-57ff-9696-3e535f059b5e
+		lineageTag: a6ce8b1e-4870-5946-954a-1bf4431fb294
 		summarizeBy: none
-		sourceColumn: Revenue
+		sourceColumn: Revenue ($M)
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Operating Margin'
+	column 'Operating Margin (%)'
 		dataType: double
 		formatString: 0.0%
 		isHidden
-		lineageTag: 3b842839-309d-5a6d-9c70-18e5ea7a45e4
+		lineageTag: 50b6cdc4-caec-54cc-ad7f-95c19ef4317d
 		summarizeBy: none
-		sourceColumn: Operating Margin
+		sourceColumn: Operating Margin (%)
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Net Income'
+	column 'Net Income ($M)'
 		dataType: double
 		formatString: #,##0
 		isHidden
-		lineageTag: 41874596-5923-5bcb-9574-b46ca78a8d29
+		lineageTag: da92d26d-0952-5e94-b110-128338d6806e
 		summarizeBy: none
-		sourceColumn: Net Income
+		sourceColumn: Net Income ($M)
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Diluted EPS'
+	column 'Diluted EPS ($)'
 		dataType: double
 		formatString: $0.00
 		isHidden
-		lineageTag: c185560d-6d29-5346-a1bd-b2c75a27f97c
+		lineageTag: d3ba3177-fb05-5205-af8e-ec147ce70c17
 		summarizeBy: none
-		sourceColumn: Diluted EPS
+		sourceColumn: Diluted EPS ($)
 
 		annotation SummarizationSetBy = Automatic
 
@@ -83,7 +83,7 @@ table Sensitivity
 		source =
 				let
 				    Source = LoadCsv("fact_sensitivity.csv"),
-				    Typed = Table.TransformColumnTypes(Source, {{"Revenue Growth Delta (pp)", Int64.Type}, {"Operating Margin Delta (bp)", Int64.Type}, {"Revenue", type number}, {"Operating Margin", type number}, {"Net Income", type number}, {"Diluted EPS", type number}, {"Revenue Growth Label", type text}, {"Operating Margin Label", type text}}, "en-US")
+				    Typed = Table.TransformColumnTypes(Source, {{"Revenue Growth Delta (pp)", Int64.Type}, {"Operating Margin Delta (bp)", Int64.Type}, {"Revenue ($M)", type number}, {"Operating Margin (%)", type number}, {"Net Income ($M)", type number}, {"Diluted EPS ($)", type number}, {"Revenue Growth Label", type text}, {"Operating Margin Label", type text}}, "en-US")
 				in
 				    Typed
 
