@@ -1,17 +1,17 @@
 /// All model measures, grouped in display folders.
-table Measures
-	lineageTag: adcb32be-89f5-52eb-b48d-963b3efd8a51
+table _Measures
+	lineageTag: a06cccf6-df7e-50e2-9c41-24724838f3c4
 
 	/// Scenario picked in the slicer; Base when none or several are selected.
 	measure 'Selected Scenario' = SELECTEDVALUE ( Scenario[Scenario], "Base" )
 		displayFolder: Engine
-		lineageTag: 7349c65a-c0f6-5fc1-aded-16c24330557a
+		lineageTag: 71c550b6-a34a-5b14-9d9a-c0fef12ea5d7
 
 	/// Latest fiscal year with reported results.
 	measure 'Last Actual FY' = CALCULATE ( MAX ( Period[Fiscal Year] ), REMOVEFILTERS ( Period ), Period[Is Forecast] = FALSE () )
 		formatString: 0
 		displayFolder: Engine
-		lineageTag: 1ed6e4d7-c41b-53a1-bf5f-d83cb56751c7
+		lineageTag: 4e65bb4e-07cb-5a46-bf88-bbb5c256139b
 
 	/// Actuals where reported, otherwise the selected scenario. If a visual filters Version (e.g. Plan), that version is used as is.
 	measure _Amount =
@@ -26,152 +26,152 @@ table Measures
 		formatString: #,##0;(#,##0)
 		isHidden
 		displayFolder: Engine
-		lineageTag: 9809198a-12bc-5717-893c-7fbe170b4a36
+		lineageTag: 5028014a-bd0e-56b6-b578-415b12462c15
 
 	/// 1 for forecast periods (where flex parameters apply).
 	measure '_Is Forecast' = IF ( MAX ( Period[Years From Last Actual] ) > 0 && NOT ISFILTERED ( Version ), 1, 0 )
 		formatString: 0
 		isHidden
 		displayFolder: Engine
-		lineageTag: b6424ba8-fcad-5909-b6e2-206021e165f5
+		lineageTag: 54c6f8a7-3a36-5a16-8d99-8e3b992e890c
 
 	/// What-if: extra revenue growth per forecast year (compounding), cost of revenue moves with it.
 	measure 'Revenue Flex' = SELECTEDVALUE ( 'Revenue Growth Flex'[Revenue Growth Flex], 0 )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Engine
-		lineageTag: 307b8da5-c835-5629-9457-f142de0e6b22
+		lineageTag: 5cd07d8c-6396-57d3-8ef8-191ecb1a17ea
 
 	/// What-if: change to operating expenses in forecast years (costs don't flex with revenue: operating leverage).
 	measure 'Opex Flex' = SELECTEDVALUE ( 'Opex Flex'[Opex Flex], 0 )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Engine
-		lineageTag: c6060b06-612e-58ca-82e2-f6b0f28c0755
+		lineageTag: de3dcd66-42dd-559e-a502-498ec12dff19
 
 	/// Multiplier applied to forecast revenue and cost of revenue.
 	measure '_Revenue Factor' = IF ( [_Is Forecast] = 1, POWER ( 1 + [Revenue Flex], MAX ( Period[Years From Last Actual] ) ), 1 )
 		formatString: 0.000
 		isHidden
 		displayFolder: Engine
-		lineageTag: d326d76c-cd00-535f-ac1a-87da5e5141e2
+		lineageTag: ad615d6b-1d45-555e-9f2a-be226acb065d
 
 	/// Multiplier applied to forecast opex.
 	measure '_Opex Factor' = IF ( [_Is Forecast] = 1, 1 + [Opex Flex], 1 )
 		formatString: 0.000
 		isHidden
 		displayFolder: Engine
-		lineageTag: eef5b58a-ab6c-58d5-a943-6d69e172ae79
+		lineageTag: 74a0652c-8b3e-5a02-aa65-81ea278b2b6b
 
 	/// Effective tax rate of the underlying (unflexed) numbers; applied to flexed pretax income.
 	measure '_Base Tax Rate' = DIVIDE ( CALCULATE ( [_Amount], Account[Code] = "TAX" ), CALCULATE ( [_Amount], Account[Code] = "REV" ) - CALCULATE ( [_Amount], Account[Code] = "COGS" ) - CALCULATE ( [_Amount], Account[Line Group] = "Operating expenses" ) + CALCULATE ( [_Amount], Account[Code] = "OIE" ) )
 		formatString: 0.0%;-0.0%
 		isHidden
 		displayFolder: Engine
-		lineageTag: 8db37be2-16f6-50a0-bf02-4fce4924a74c
+		lineageTag: fb3bc4b6-b191-552e-9c7b-5d55b6130480
 
 	/// Revenue, $M.
 	measure Revenue = CALCULATE ( [_Amount], Account[Code] = "REV" ) * [_Revenue Factor]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 18aeab00-f141-5042-8572-d719a026ff47
+		lineageTag: 44bbaa3d-7fd5-5e91-a8f2-ee3a9ef69c92
 
 	/// Cost of revenue, $M (positive).
 	measure 'Cost of Revenue' = CALCULATE ( [_Amount], Account[Code] = "COGS" ) * [_Revenue Factor]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: a3cf2815-41bd-5791-b99e-ec2c338a5dd0
+		lineageTag: a0e0dccb-36db-5901-9ecd-b4aad3a3a004
 
 	/// Revenue − cost of revenue.
 	measure 'Gross Profit' = [Revenue] - [Cost of Revenue]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 9789bde5-8484-52fe-b776-29648e2d5568
+		lineageTag: ac5a6e02-b5a4-5662-ae5c-0eb7dedc7838
 
 	measure 'Research and Development' = CALCULATE ( [_Amount], Account[Code] = "RD" ) * [_Opex Factor]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 13a4031a-466c-5015-8fba-c1061c22e8bf
+		lineageTag: bd068fa6-1b5f-515b-ae50-52ecfea8f994
 
 	measure 'Sales and Marketing' = CALCULATE ( [_Amount], Account[Code] = "SM" ) * [_Opex Factor]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: b347c23e-72ed-5929-924e-2d8745ee5910
+		lineageTag: fc736b49-4fd5-54db-89bf-0de9cdacf61f
 
 	measure 'General and Administrative' = CALCULATE ( [_Amount], Account[Code] = "GA" ) * [_Opex Factor]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 7c67fe7d-5b9d-5533-8a45-2b03bf83be74
+		lineageTag: ac2264a1-5f50-5e48-84e1-f8cca3e19a24
 
 	/// Impairment, integration and restructuring (FY2012 aQuantive, FY2015–17 Nokia).
 	measure 'Impairment and Restructuring' = CALCULATE ( [_Amount], Account[Code] = "IMP" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 2c540eb6-9a20-52ed-8a6c-02b80d6ac941
+		lineageTag: 5f302232-a6f9-5502-b257-cbb3792b30b4
 
 	/// Total operating expenses.
 	measure 'Operating Expenses' = [Research and Development] + [Sales and Marketing] + [General and Administrative] + [Impairment and Restructuring]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 4b4ef79c-c25e-5e1f-b4f0-f082e6edc44a
+		lineageTag: 3e044257-04df-56f2-9340-6c004eba270f
 
 	/// Gross profit − operating expenses.
 	measure 'Operating Income' = [Gross Profit] - [Operating Expenses]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 8ef7963a-e1c4-5322-919a-a040e7df9d54
+		lineageTag: 92b06394-8239-5042-8265-996d6e132986
 
 	/// Other income (expense), net; keeps its reported sign.
 	measure 'Other Income (Expense)' = CALCULATE ( [_Amount], Account[Code] = "OIE" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 215d1d5f-1680-5f29-bd98-ceee67674ad8
+		lineageTag: 6d5b935f-3e04-5b42-9ff8-966efcb7c8be
 
 	/// Income before income taxes.
 	measure 'Pretax Income' = [Operating Income] + [Other Income (Expense)]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 15b1f986-72cb-5de5-a1f7-4cdb74a84d59
+		lineageTag: 560e3193-d262-5d7b-bb8c-10e4d245a5de
 
 	/// Provision for income taxes; in forecasts, the scenario's tax rate on (flexed) pretax income.
 	measure 'Income Tax' = IF ( [_Is Forecast] = 1, [Pretax Income] * [_Base Tax Rate], CALCULATE ( [_Amount], Account[Code] = "TAX" ) )
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 7bc0fd5c-7a6e-554d-9e75-fdac734f22a1
+		lineageTag: 3bb891d5-f53a-5fef-9f4e-e098c18fb27d
 
 	/// Net income, $M.
 	measure 'Net Income' = [Pretax Income] - [Income Tax]
 		formatString: #,##0;(#,##0)
 		displayFolder: Income statement
-		lineageTag: 8d9a88e8-d348-5d91-92b8-ade0b5beeb18
+		lineageTag: d290c19c-ef36-59ba-b9f2-44b610fc2448
 
 	measure 'Gross Margin %' = DIVIDE ( [Gross Profit], [Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Ratios
-		lineageTag: 72a142a4-bffe-5763-b189-211e5fa7af54
+		lineageTag: 0381ad8e-adda-5f02-afb7-c96c42979b95
 
 	measure 'Opex % of Revenue' = DIVIDE ( [Operating Expenses], [Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Ratios
-		lineageTag: e36d3eb6-0ab8-583e-ab6c-69b72ccb39cf
+		lineageTag: adc5ec33-8f09-53f6-a1ce-1d09115c0177
 
 	measure 'R&D % of Revenue' = DIVIDE ( [Research and Development], [Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Ratios
-		lineageTag: 5dc413d0-7050-514e-8bfe-95c2c345f5bf
+		lineageTag: 92f15c07-9acf-5b61-96b1-1e6180f91ef3
 
 	measure 'Operating Margin %' = DIVIDE ( [Operating Income], [Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Ratios
-		lineageTag: 55c655f0-8862-5471-a1f2-ee8512d1d2f2
+		lineageTag: 0327c989-bba3-54a5-87d4-f8605df3b3ea
 
 	measure 'Effective Tax Rate' = DIVIDE ( [Income Tax], [Pretax Income] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Ratios
-		lineageTag: d2d5a76b-c9db-53ff-8fca-8bf242aed5d2
+		lineageTag: 2515a289-a510-55d4-a295-76e97dfaa5d0
 
 	measure 'Net Margin %' = DIVIDE ( [Net Income], [Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Ratios
-		lineageTag: 5591179e-034d-5d96-a7dc-eda167f8326d
+		lineageTag: 9322b6be-7273-57b4-8912-94b996f8b316
 
 	/// KPI value with the same actual-else-scenario logic as _Amount.
 	measure _KPI =
@@ -186,141 +186,141 @@ table Measures
 		formatString: #,##0.00
 		isHidden
 		displayFolder: Engine
-		lineageTag: b8823c32-06cb-581b-9a52-5c27ced2d80d
+		lineageTag: e2134da6-f608-5f40-b354-b79bc86aafd2
 
 	/// Weighted average diluted shares, millions.
 	measure 'Diluted Shares (M)' = CALCULATE ( [_KPI], KPI[Metric] = "Diluted shares (M)" )
 		formatString: #,##0
 		displayFolder: Per share and cash
-		lineageTag: 6c907aaf-e7be-5f51-95b4-9cebb59e0275
+		lineageTag: 22a3cacc-08de-5827-8f5e-b88cc90c9df5
 
 	/// Net income ÷ diluted shares (matches reported EPS within rounding).
 	measure 'Diluted EPS' = DIVIDE ( [Net Income], [Diluted Shares (M)] )
 		formatString: $0.00;($0.00)
 		displayFolder: Per share and cash
-		lineageTag: 328e47fa-eb1d-5139-aa92-5cebdf1e69ee
+		lineageTag: 19000672-5c96-52f7-84a7-d122bfec2d7e
 
 	measure 'Operating Cash Flow' = CALCULATE ( [_KPI], KPI[Metric] = "Operating cash flow" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Per share and cash
-		lineageTag: 07897c57-6a68-5c41-8266-c3df46ad8aeb
+		lineageTag: 22cd0a6f-78e8-51f0-8377-2baae921997e
 
 	/// Additions to property and equipment.
 	measure 'Capital Expenditures' = CALCULATE ( [_KPI], KPI[Metric] = "Capital expenditures" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Per share and cash
-		lineageTag: 106b459a-f11f-5528-9b83-514d07167b5f
+		lineageTag: 7e30d438-a53a-5d31-b098-d9fc88626ae6
 
 	measure 'Free Cash Flow' = [Operating Cash Flow] - [Capital Expenditures]
 		formatString: #,##0;(#,##0)
 		displayFolder: Per share and cash
-		lineageTag: 2672908f-f1f7-5610-9186-876470b09e61
+		lineageTag: 99c319ef-d611-5904-9f77-b474319490e7
 
 	measure 'Capex % of Revenue' = DIVIDE ( [Capital Expenditures], [Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Per share and cash
-		lineageTag: 3001e356-cc61-5a68-ae5e-c0f9cfebf8ce
+		lineageTag: b33df827-6fe2-5c11-b788-fbc1d5019d97
 
 	measure 'FCF Margin %' = DIVIDE ( [Free Cash Flow], [Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Per share and cash
-		lineageTag: eff576aa-76eb-591c-926d-9382354fda5f
+		lineageTag: 577865a0-3315-5c53-b158-079616d37fb3
 
 	/// Microsoft Cloud (overlaps segments; not additive with them).
 	measure 'Microsoft Cloud Revenue' = CALCULATE ( [_KPI], KPI[Metric] = "Microsoft Cloud revenue" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Per share and cash
-		lineageTag: 8c245f14-54aa-5b5c-aab3-7d2118c575d1
+		lineageTag: 66529c92-e5da-5eac-9283-103e334a6623
 
 	measure 'Microsoft Cloud % of Revenue' = DIVIDE ( [Microsoft Cloud Revenue], [Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Per share and cash
-		lineageTag: 6d80c22f-5423-5e3d-bbb6-4db4804e59f9
+		lineageTag: 41bb13e2-ff71-5107-8d16-bef13720d64e
 
 	/// Revenue in the same period a year earlier.
 	measure 'Revenue PY' = VAR _k = SELECTEDVALUE ( Period[PeriodKey] ) RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( Period ), Period[PeriodKey] = _k - 10 )
 		formatString: #,##0;(#,##0)
 		displayFolder: Growth
-		lineageTag: 1df64cd9-5eb6-530e-9b41-2a6ac106b1b0
+		lineageTag: f2a31d6f-e9cc-544f-88ba-7d93cf6d0b5f
 
 	measure 'Revenue YoY %' = DIVIDE ( [Revenue], [Revenue PY] ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Growth
-		lineageTag: ba8d1af2-e8cf-5489-88ae-e4a69e30299c
+		lineageTag: 4cbacefe-8ad9-5eb7-a37e-dd95215caf8d
 
 	measure 'Operating Income YoY %' = VAR _k = SELECTEDVALUE ( Period[PeriodKey] ) RETURN DIVIDE ( [Operating Income], CALCULATE ( [Operating Income], REMOVEFILTERS ( Period ), Period[PeriodKey] = _k - 10 ) ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Growth
-		lineageTag: 4a978188-4792-5d91-82dd-1fb181c7663b
+		lineageTag: 0a7b34c0-27a1-5c64-8151-0b3173cd6b59
 
 	measure 'Diluted EPS YoY %' = VAR _k = SELECTEDVALUE ( Period[PeriodKey] ) RETURN DIVIDE ( [Diluted EPS], CALCULATE ( [Diluted EPS], REMOVEFILTERS ( Period ), Period[PeriodKey] = _k - 10 ) ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Growth
-		lineageTag: 0a052ed2-cc8b-5da5-87bd-af31d4d3cf54
+		lineageTag: 9a0c4478-877f-50ca-838d-513d09a3d24d
 
 	/// Last actual fiscal year revenue.
 	measure 'LY Revenue' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Headline
-		lineageTag: c543d81a-8204-5a1b-ab9c-e6e787e541b3
+		lineageTag: 4b50be1b-efae-5a9b-baf2-39b87ae83b4a
 
 	measure 'LY Revenue YoY %' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Revenue YoY %], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Headline
-		lineageTag: bfa8a25e-4c00-545d-b045-6981ead6f3c6
+		lineageTag: 3e104660-df83-5a90-92dd-f5df7c5d2ccf
 
 	measure 'LY Operating Margin %' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Operating Margin %], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: 0.0%;-0.0%
 		displayFolder: Headline
-		lineageTag: 0a28c0e5-fbb6-5925-80ec-8deefb834d2b
+		lineageTag: 2ec73b19-fc10-5310-a171-857fe858c81e
 
 	measure 'LY Diluted EPS' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: $0.00;($0.00)
 		displayFolder: Headline
-		lineageTag: 10f5f54c-3208-536e-8d1c-0318d94e6494
+		lineageTag: 61e542e2-cb42-5d30-b9e8-ae7b818f34b2
 
 	measure 'LY Free Cash Flow' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Free Cash Flow], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Headline
-		lineageTag: 02133ace-e698-5547-95c5-df5ca1d05347
+		lineageTag: 5f9bcb21-8906-5f4b-9e8a-a59cc3c858f0
 
 	/// Next fiscal year revenue, selected scenario.
 	measure 'NY Revenue' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Headline
-		lineageTag: 904c3b00-6eef-5f26-9928-dbcc904aff78
+		lineageTag: 8584fa41-7ebf-50e8-a192-9afa79d07add
 
 	measure 'NY Revenue YoY %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Revenue YoY %], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Headline
-		lineageTag: 0a720246-9e7a-556a-9af4-d8a4a5418fdd
+		lineageTag: 5202e8ae-fc04-5eaa-9b6d-9e0ef83c56b0
 
 	measure 'NY Operating Margin %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Operating Margin %], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: 0.0%;-0.0%
 		displayFolder: Headline
-		lineageTag: 76e90b88-c056-593d-95db-90f314bd0e3f
+		lineageTag: 0c2bf7b4-e421-5587-b98a-d7b857e3ca05
 
 	/// Next fiscal year diluted EPS, selected scenario (with flex).
 	measure 'NY Diluted EPS' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: $0.00;($0.00)
 		displayFolder: Headline
-		lineageTag: 8e01eb76-1f95-5794-b3a7-fb435fdf5fb2
+		lineageTag: ecce56b5-bfa7-5379-b7f8-3de0d4edc3e2
 
 	measure 'NY Diluted EPS YoY %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Diluted EPS YoY %], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Headline
-		lineageTag: cef53baf-b37a-5540-8933-9f6fc8e1c5d5
+		lineageTag: 86d51ff1-9e8a-5960-8ec4-d8bf5cd7e4fc
 
 	/// Diluted EPS three years out, selected scenario.
 	measure 'Y3 Diluted EPS' = VAR _fy = [Last Actual FY] + 3 RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( Period ), Period[Fiscal Year] = _fy, Period[Period Type] = "Year" )
 		formatString: $0.00;($0.00)
 		displayFolder: Headline
-		lineageTag: 6038fa71-01fe-5002-8583-205518a82a15
+		lineageTag: d9a33545-2a87-5f91-8424-d5a032c1c96b
 
 	measure 'EPS CAGR (3y)' = DIVIDE ( [Y3 Diluted EPS], [LY Diluted EPS] ) ^ ( 1 / 3 ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Headline
-		lineageTag: 48518bdb-fa77-5fc0-8bec-4d2e241f845d
+		lineageTag: 144cb7bd-f5d7-5585-8050-7bf98d004f30
 
 	/// Next-year EPS weighted by scenario probabilities (assumptions file).
 	measure 'NY Diluted EPS (Probability-Weighted)' =
@@ -330,7 +330,7 @@ table Measures
 			)
 		formatString: $0.00;($0.00)
 		displayFolder: Headline
-		lineageTag: 84076609-c05b-561f-89d0-91114d9dd662
+		lineageTag: 64a50d9e-bfb4-5909-a54e-81612fa4a5b1
 
 	/// Segment amount with the actual-else-scenario logic.
 	measure '_Segment Amount' =
@@ -345,54 +345,54 @@ table Measures
 		formatString: #,##0;(#,##0)
 		isHidden
 		displayFolder: Engine
-		lineageTag: c3225ee4-d649-5e0e-8533-3397b987ac7d
+		lineageTag: e1865c08-7b22-5ff5-81e6-0d4e8e6f1de0
 
 	measure 'Segment Revenue' = CALCULATE ( [_Segment Amount], 'Segment P&L'[Metric] = "Revenue" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Segments
-		lineageTag: 65ef55e1-84ed-5a12-8844-18f3a0d8f6de
+		lineageTag: ee9db62b-1f38-5982-b682-37e548d4d9ad
 
 	measure 'Segment Operating Income' = CALCULATE ( [_Segment Amount], 'Segment P&L'[Metric] = "Operating income" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Segments
-		lineageTag: e3db7a4a-794a-56ff-9c2a-c3775677ae84
+		lineageTag: 22f9b57a-ae1b-53dc-af4e-423132694a56
 
 	/// Available from FY2023 annual and FY2025 quarterly (segment costs disclosed from FY2025).
 	measure 'Segment Gross Margin %' = DIVIDE ( [Segment Revenue] - CALCULATE ( [_Segment Amount], 'Segment P&L'[Metric] = "Cost of revenue" ), [Segment Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Segments
-		lineageTag: 6d53aa34-04fd-50b7-90f8-717bd63cc05a
+		lineageTag: 9e2d86ee-c9fc-50c2-95b5-6a0de5466492
 
 	measure 'Segment Operating Margin %' = DIVIDE ( [Segment Operating Income], [Segment Revenue] )
 		formatString: 0.0%;-0.0%
 		displayFolder: Segments
-		lineageTag: ff1f042b-983e-5d54-bc7e-fc64c7f82ca6
+		lineageTag: 35115e0f-04c1-50af-bf70-55ae57cb4a99
 
 	measure 'Segment Revenue YoY %' = VAR _k = SELECTEDVALUE ( Period[PeriodKey] ) RETURN DIVIDE ( [Segment Revenue], CALCULATE ( [Segment Revenue], REMOVEFILTERS ( Period ), Period[PeriodKey] = _k - 10 ) ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Segments
-		lineageTag: 2c83e264-b8e9-543d-ae43-e4f17a9aa5e2
+		lineageTag: 73e8e990-7e91-504d-9c3a-416617341f02
 
 	measure 'Segment Revenue Share %' = DIVIDE ( [Segment Revenue], CALCULATE ( [Segment Revenue], REMOVEFILTERS ( Segment ) ) )
 		formatString: 0.0%;-0.0%
 		displayFolder: Segments
-		lineageTag: 1918ad48-ff58-56e3-bf8d-0f846112d66a
+		lineageTag: a97a4f0f-0a40-5723-bfb1-463e3eea45f5
 
 	/// Revenue by the breakdown on the visual (actuals).
 	measure 'Mix Revenue' = SUM ( 'Revenue Mix'[Amount] )
 		formatString: #,##0;(#,##0)
 		displayFolder: Revenue mix
-		lineageTag: 5a19706c-fe51-5616-9cd9-1a04f1dda783
+		lineageTag: 586de13e-1867-55a3-b8bc-5417388cb3c9
 
 	measure 'Mix Revenue YoY %' = VAR _k = SELECTEDVALUE ( Period[PeriodKey] ) RETURN DIVIDE ( [Mix Revenue], CALCULATE ( [Mix Revenue], REMOVEFILTERS ( Period ), Period[PeriodKey] = _k - 10 ) ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Revenue mix
-		lineageTag: 18487826-00a4-575b-acaa-befc37dcd297
+		lineageTag: 824978fe-9ec6-5843-af00-98f5ada18cdd
 
 	measure 'Mix Share %' = DIVIDE ( [Mix Revenue], CALCULATE ( [Mix Revenue], REMOVEFILTERS ( 'Revenue Mix'[Item] ) ) )
 		formatString: 0.0%;-0.0%
 		displayFolder: Revenue mix
-		lineageTag: 8a1d1411-c38d-5873-a0ac-65e169a369b7
+		lineageTag: e5a4cb35-306c-5650-b676-1c0500a25ad7
 
 	/// Value for the P&L Line on the row; costs shown negative. Formatting follows the line ($M, %, $/share).
 	measure 'P&L Value' =
@@ -422,7 +422,7 @@ table Measures
 			        "Diluted EPS", [Diluted EPS]
 			    )
 		displayFolder: P&L template
-		lineageTag: fbd30884-0889-5e55-b8d7-c72155aec0f2
+		lineageTag: ef510425-204c-5d46-be8a-9d060acbe349
 
 		formatStringDefinition =
 				SWITCH (
@@ -445,11 +445,11 @@ table Measures
 			    )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: P&L template
-		lineageTag: 305e0508-d931-5f45-b651-c064546d2708
+		lineageTag: eb8696ae-dd98-5fa7-899d-da213cc2f7a7
 
 	measure 'P&L Actual' = CALCULATE ( [P&L Value], Version[Version Type] = "Actual" )
 		displayFolder: P&L template
-		lineageTag: 1c406e7c-b172-5001-b25a-1916b730db5a
+		lineageTag: 916c0372-35e2-50e0-9fa1-c767f211e34e
 
 		formatStringDefinition =
 				SWITCH (
@@ -463,7 +463,7 @@ table Measures
 	/// What the model would have forecast a year earlier (rules applied to prior-year actuals, no hindsight).
 	measure 'P&L Plan' = CALCULATE ( [P&L Value], Version[Version Type] = "Plan" )
 		displayFolder: P&L template
-		lineageTag: 01f40733-ba29-5128-a9a6-102efd33b6e9
+		lineageTag: bed6f14e-e3ce-507e-b42a-7405e8a4a16b
 
 		formatStringDefinition =
 				SWITCH (
@@ -477,7 +477,7 @@ table Measures
 	/// Actual − plan (pp for ratios). Costs are negative, so a positive variance on any $ line is favourable.
 	measure 'P&L Variance' = IF ( NOT ISBLANK ( [P&L Plan] ), [P&L Actual] - [P&L Plan] )
 		displayFolder: P&L template
-		lineageTag: b1648967-1899-575d-bb67-f300b1dd4714
+		lineageTag: e0fd06e4-80e0-51a3-88c5-5b1c6cb29f7e
 
 		formatStringDefinition =
 				SWITCH (
@@ -495,118 +495,118 @@ table Measures
 			)
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: P&L template
-		lineageTag: bffa818b-47d9-5944-bfd9-77dc5f3255d8
+		lineageTag: 3f857087-1e10-5500-a88b-dcbea2d6b88c
 
 	/// Green when the variance is favourable, red when not (lower is better for costs ratios and tax rate).
 	measure 'Variance Color' =
 			VAR _v = [P&L Variance] * SELECTEDVALUE ( 'P&L Line'[Favourable], 1 )
 			RETURN SWITCH ( TRUE (), ISBLANK ( _v ), BLANK (), _v >= 0, "#1B7F3B", "#B3261E" )
 		displayFolder: P&L template
-		lineageTag: 0f69f958-ae5a-55d5-9099-19639cd763e6
+		lineageTag: 165272d8-3cd6-54e8-8b54-589f581190bf
 
 	measure 'Segment Revenue Plan' = CALCULATE ( [Segment Revenue], Version[Version Type] = "Plan" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Segments
-		lineageTag: 18189751-4e84-5191-86cb-a277626acce7
+		lineageTag: b6dc0173-f3f3-58a6-8997-ca29441c5bb6
 
 	measure 'Segment Revenue Actual' = CALCULATE ( [Segment Revenue], Version[Version Type] = "Actual" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Segments
-		lineageTag: c2fee523-0b12-5ad9-8e82-220ff8ab85c9
+		lineageTag: 3d5477c8-fe70-5db2-a50f-f4fa4fc4e46f
 
 	measure 'Segment Revenue Variance %' = DIVIDE ( [Segment Revenue Actual] - [Segment Revenue Plan], [Segment Revenue Plan] )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Segments
-		lineageTag: 76052725-77cf-5545-adcb-e39f3764320f
+		lineageTag: 1ec77756-47c4-56b7-b2f5-c8da1dbb9666
 
 	measure 'Segment OM % Plan' = CALCULATE ( [Segment Operating Margin %], Version[Version Type] = "Plan" )
 		formatString: 0.0%;-0.0%
 		displayFolder: Segments
-		lineageTag: 66fe865d-fa56-5b81-9879-607156778096
+		lineageTag: bd983373-618b-5132-951a-ba2eaab298e3
 
 	measure 'Segment OM % Actual' = CALCULATE ( [Segment Operating Margin %], Version[Version Type] = "Actual" )
 		formatString: 0.0%;-0.0%
 		displayFolder: Segments
-		lineageTag: 41cd6cca-cbe9-51cb-81ed-98bb6fdbc807
+		lineageTag: 2cbaaaea-fcc3-54b6-b3dd-d196b3ff7cb7
 
 	/// Bridge step value ($M for net income / operating income, $ for EPS).
 	measure 'Bridge Value' = SUM ( Bridge[Value] )
 		formatString: #,##0.00
 		displayFolder: Bridges
-		lineageTag: a9debacf-611e-5b35-afc7-bf3881f98f9d
+		lineageTag: 7d0545e5-ab73-5f0b-8cea-e917c0dc14c3
 
 	measure 'Sensitivity EPS' = SUM ( Sensitivity[Diluted EPS] )
 		formatString: $0.00;($0.00)
 		displayFolder: Sensitivity
-		lineageTag: a72e3ca9-1d4c-5f61-ac0a-915a0d7baf9d
+		lineageTag: 7aee703b-6499-5117-8364-3e5d1df192ed
 
 	measure 'Sensitivity vs Base' =
 			VAR _base = CALCULATE ( SUM ( Sensitivity[Diluted EPS] ), REMOVEFILTERS ( Sensitivity ), Sensitivity[Revenue Growth Delta (pp)] = 0, Sensitivity[Operating Margin Delta (bp)] = 0 )
 			RETURN DIVIDE ( [Sensitivity EPS], _base ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Sensitivity
-		lineageTag: 6460b1d4-2930-59aa-b457-39c8f3d6a683
+		lineageTag: aee9dba4-3850-5816-af92-8635b132c654
 
 	/// Cell shading: green above base, red below.
 	measure 'Sensitivity Color' =
 			VAR _d = [Sensitivity vs Base]
 			RETURN SWITCH ( TRUE (), _d > 0.10, "#7FC8A0", _d > 0.03, "#C9E8D5", _d >= -0.03, "#F2F2F2", _d >= -0.10, "#F5CBC7", "#E8908A" )
 		displayFolder: Sensitivity
-		lineageTag: 033c261e-ac4c-57b2-b199-1f3af6144d6d
+		lineageTag: 50399174-52a7-5e2a-bedf-01e1c6b93d84
 
 	/// Mean absolute % error of the model.
 	measure 'Model MAPE' = AVERAGEX ( Backtest, ABS ( Backtest[Model Error %] ) )
 		formatString: 0.0%;-0.0%
 		displayFolder: Validation
-		lineageTag: 7c19161e-77de-5130-85c0-14ab18e21aad
+		lineageTag: 432fce9b-5c9a-5a07-a87f-29da2b728d35
 
 	/// Same, for last-year-repeats.
 	measure 'Naive MAPE' = AVERAGEX ( Backtest, ABS ( Backtest[Naive Error %] ) )
 		formatString: 0.0%;-0.0%
 		displayFolder: Validation
-		lineageTag: d0c044e2-0761-554e-90f7-110875d4920b
+		lineageTag: 458892c2-1867-546a-84ac-c35022daff7c
 
 	/// Average signed error: + means over-forecast.
 	measure 'Model Bias' = AVERAGE ( Backtest[Model Error %] )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Validation
-		lineageTag: 76208a25-d4db-5210-923c-c6d9eae8b271
+		lineageTag: a8833a5f-61c9-5161-8be1-2706d37ebfbc
 
 	measure 'Model MAPE ex One-offs' = CALCULATE ( [Model MAPE], Backtest[One-off Year] = FALSE () )
 		formatString: 0.0%;-0.0%
 		displayFolder: Validation
-		lineageTag: e666e07b-c9ca-5c9a-8a90-fea8fc58bddb
+		lineageTag: f1880f33-cc8c-53e1-995c-8a39fa0b08f1
 
 	measure 'Naive MAPE ex One-offs' = CALCULATE ( [Naive MAPE], Backtest[One-off Year] = FALSE () )
 		formatString: 0.0%;-0.0%
 		displayFolder: Validation
-		lineageTag: 6e1bbbef-348a-5d95-8204-da724426db4a
+		lineageTag: eb155bca-f1c3-520b-a4f8-eca54407e85f
 
 	measure 'Checks Passed' = COUNTROWS ( FILTER ( Checks, Checks[Status] = "Pass" ) ) + 0
 		formatString: #,##0
 		displayFolder: Validation
-		lineageTag: 6604db39-e10c-5200-9bc7-2eeef6505bf0
+		lineageTag: 450bb710-f554-5d17-ab9a-8ae9f17ac7f2
 
 	measure 'Checks Failed' = COUNTROWS ( FILTER ( Checks, Checks[Status] = "Fail" ) ) + 0
 		formatString: #,##0
 		displayFolder: Validation
-		lineageTag: 93693a1e-1fbb-5791-897c-af3c50156b4c
+		lineageTag: 63359a8b-e341-5cc6-863b-7c35f013d7ca
 
 	/// Driver value in its unit (%, bp or $M).
 	measure 'Assumption Value' = SUM ( Assumptions[Value] )
 		formatString: #,##0.0
 		displayFolder: Assumptions
-		lineageTag: 1302278f-6712-5331-b512-225e98f0eefc
+		lineageTag: e6a61fc0-91a3-553a-a780-38fdfbe9590c
 
 	column Placeholder
 		dataType: string
 		isHidden
-		lineageTag: 557583ff-bd21-53f7-9f53-d8430d21f21f
+		lineageTag: 016aaf5e-d253-51f9-ba6d-0d42a6abe863
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Placeholder]
 
-	partition Measures = calculated
+	partition _Measures = calculated
 		mode: import
 		source = ROW ( "Placeholder", "" )
 

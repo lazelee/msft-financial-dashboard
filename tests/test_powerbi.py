@@ -28,7 +28,7 @@ def model_fields():
     cols["P&L Line"] = {"Line", "Sort", "Format", "Favourable", "Style"}
     cols["Revenue Growth Flex"] = {"Revenue Growth Flex"}
     cols["Opex Flex"] = {"Opex Flex"}
-    cols["Measures"] = {"Placeholder"}
+    cols[bm.MEASURES_TABLE] = {"Placeholder"}
     return cols, {m[0] for m in bm.MEASURES}
 
 
@@ -86,7 +86,7 @@ def test_every_report_field_exists_in_the_model():
     for path in REPORT.rglob("visual.json"):
         for kind, entity, prop in _field_refs(json.loads(path.read_text())):
             ok = prop in measures if kind == "Measure" else prop in cols.get(entity, ())
-            if kind == "Measure" and entity != "Measures":
+            if kind == "Measure" and entity != bm.MEASURES_TABLE:
                 ok = False
             if not ok:
                 missing.append(f"{path.parent.name}: {kind} {entity}[{prop}]")
@@ -166,3 +166,24 @@ def test_tmdl_uses_tab_indentation():
 
 def test_model_csv_columns_match_data():
     bm.check_csv_headers()
+
+
+def test_table_names_are_allowed_by_power_bi():
+    """Power BI rejects tables named like engine objects ("Measures" is the MDX name for all measures)."""
+    import build_report as br
+
+    reserved = {"measures", "$system", "model", "database"}
+    tables = [t[0] for t in bm.CSV_TABLES] + ["P&L Line", "Revenue Growth Flex", "Opex Flex", bm.MEASURES_TABLE]
+    assert not [t for t in tables if t.lower() in reserved]
+    assert br.MEASURES_TABLE == bm.MEASURES_TABLE
+
+
+def test_conditional_formatting_selectors_point_at_real_measures():
+    _, measures = model_fields()
+    bad = []
+    for path in REPORT.rglob("visual.json"):
+        for m in re.findall(r'"metadata": "([^"]+)"', path.read_text()):
+            table, _, name = m.partition(".")
+            if table != bm.MEASURES_TABLE or name not in measures:
+                bad.append((path.parent.name, m))
+    assert not bad, bad

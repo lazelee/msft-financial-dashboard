@@ -38,13 +38,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "P&L Plan"
                 }
               },
-              "queryRef": "Measures.P&L Plan",
+              "queryRef": "_Measures.P&L Plan",
               "nativeQueryRef": "P&L Plan",
               "displayName": "Plan"
             },
@@ -53,13 +53,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "P&L Actual"
                 }
               },
-              "queryRef": "Measures.P&L Actual",
+              "queryRef": "_Measures.P&L Actual",
               "nativeQueryRef": "P&L Actual",
               "displayName": "Actual"
             },
@@ -68,13 +68,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "P&L Variance"
                 }
               },
-              "queryRef": "Measures.P&L Variance",
+              "queryRef": "_Measures.P&L Variance",
               "nativeQueryRef": "P&L Variance",
               "displayName": "Variance"
             },
@@ -83,13 +83,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "P&L Variance %"
                 }
               },
-              "queryRef": "Measures.P&L Variance %",
+              "queryRef": "_Measures.P&L Variance %",
               "nativeQueryRef": "P&L Variance %",
               "displayName": "Variance %"
             }
@@ -145,7 +145,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Measures"
+                          "Entity": "_Measures"
                         }
                       },
                       "Property": "Variance Color"
@@ -163,7 +163,7 @@
                 }
               }
             ],
-            "metadata": "Measures.P&L Variance"
+            "metadata": "_Measures.P&L Variance"
           }
         },
         {
@@ -175,7 +175,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Measures"
+                          "Entity": "_Measures"
                         }
                       },
                       "Property": "Variance Color"
@@ -193,7 +193,7 @@
                 }
               }
             ],
-            "metadata": "Measures.P&L Variance %"
+            "metadata": "_Measures.P&L Variance %"
           }
         }
       ]

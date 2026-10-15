@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "LY Diluted EPS"
                 }
               },
-              "queryRef": "Measures.LY Diluted EPS",
+              "queryRef": "_Measures.LY Diluted EPS",
               "nativeQueryRef": "LY Diluted EPS",
               "displayName": "FY26 diluted EPS"
             }

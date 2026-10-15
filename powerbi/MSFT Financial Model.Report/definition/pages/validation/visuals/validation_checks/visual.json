@@ -34,13 +34,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Checks Passed"
                 }
               },
-              "queryRef": "Measures.Checks Passed",
+              "queryRef": "_Measures.Checks Passed",
               "nativeQueryRef": "Checks Passed",
               "displayName": "Passed"
             },
@@ -49,13 +49,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Checks Failed"
                 }
               },
-              "queryRef": "Measures.Checks Failed",
+              "queryRef": "_Measures.Checks Failed",
               "nativeQueryRef": "Checks Failed",
               "displayName": "Failed"
             }

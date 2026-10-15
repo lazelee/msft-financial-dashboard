@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "NY Diluted EPS (Probability-Weighted)"
                 }
               },
-              "queryRef": "Measures.NY Diluted EPS (Probability-Weighted)",
+              "queryRef": "_Measures.NY Diluted EPS (Probability-Weighted)",
               "nativeQueryRef": "NY Diluted EPS (Probability-Weighted)",
               "displayName": "FY27E EPS (probability-weighted)"
             }

@@ -58,13 +58,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Sensitivity EPS"
                 }
               },
-              "queryRef": "Measures.Sensitivity EPS",
+              "queryRef": "_Measures.Sensitivity EPS",
               "nativeQueryRef": "Sensitivity EPS",
               "displayName": "EPS"
             }
@@ -120,7 +120,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Measures"
+                          "Entity": "_Measures"
                         }
                       },
                       "Property": "Sensitivity Color"
@@ -138,7 +138,7 @@
                 }
               }
             ],
-            "metadata": "Measures.Sensitivity EPS"
+            "metadata": "_Measures.Sensitivity EPS"
           }
         }
       ]

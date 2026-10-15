@@ -38,13 +38,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Mix Revenue"
                 }
               },
-              "queryRef": "Measures.Mix Revenue",
+              "queryRef": "_Measures.Mix Revenue",
               "nativeQueryRef": "Mix Revenue",
               "displayName": "FY26 revenue ($M)"
             }
@@ -58,7 +58,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Measures"
+                    "Entity": "_Measures"
                   }
                 },
                 "Property": "Mix Revenue"

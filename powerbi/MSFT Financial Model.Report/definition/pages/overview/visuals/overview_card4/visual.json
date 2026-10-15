@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "LY Free Cash Flow"
                 }
               },
-              "queryRef": "Measures.LY Free Cash Flow",
+              "queryRef": "_Measures.LY Free Cash Flow",
               "nativeQueryRef": "LY Free Cash Flow",
               "displayName": "FY26 free cash flow"
             }

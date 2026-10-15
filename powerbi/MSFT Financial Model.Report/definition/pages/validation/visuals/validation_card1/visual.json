@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Checks Failed"
                 }
               },
-              "queryRef": "Measures.Checks Failed",
+              "queryRef": "_Measures.Checks Failed",
               "nativeQueryRef": "Checks Failed",
               "displayName": "Checks failed"
             }

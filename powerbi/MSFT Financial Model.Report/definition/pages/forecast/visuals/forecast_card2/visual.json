@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "NY Operating Margin %"
                 }
               },
-              "queryRef": "Measures.NY Operating Margin %",
+              "queryRef": "_Measures.NY Operating Margin %",
               "nativeQueryRef": "NY Operating Margin %",
               "displayName": "FY27E operating margin"
             }

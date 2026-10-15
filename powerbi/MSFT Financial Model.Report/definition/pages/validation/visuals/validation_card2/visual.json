@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Model MAPE"
                 }
               },
-              "queryRef": "Measures.Model MAPE",
+              "queryRef": "_Measures.Model MAPE",
               "nativeQueryRef": "Model MAPE",
               "displayName": "Model error, net income (all years)"
             }

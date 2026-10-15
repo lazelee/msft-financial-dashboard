@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "EPS CAGR (3y)"
                 }
               },
-              "queryRef": "Measures.EPS CAGR (3y)",
+              "queryRef": "_Measures.EPS CAGR (3y)",
               "nativeQueryRef": "EPS CAGR (3y)",
               "displayName": "EPS CAGR FY26–29E"
             }

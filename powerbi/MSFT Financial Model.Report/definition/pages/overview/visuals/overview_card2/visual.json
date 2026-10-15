@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "LY Operating Margin %"
                 }
               },
-              "queryRef": "Measures.LY Operating Margin %",
+              "queryRef": "_Measures.LY Operating Margin %",
               "nativeQueryRef": "LY Operating Margin %",
               "displayName": "FY26 operating margin"
             }

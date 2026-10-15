@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Microsoft Cloud Revenue"
                 }
               },
-              "queryRef": "Measures.Microsoft Cloud Revenue",
+              "queryRef": "_Measures.Microsoft Cloud Revenue",
               "nativeQueryRef": "Microsoft Cloud Revenue",
               "displayName": "FY26 Microsoft Cloud revenue ($M)"
             }

@@ -21,6 +21,9 @@ DATA = ROOT / "data"
 NAME = "MSFT Financial Model"
 MODEL_DIR = ROOT / "powerbi" / f"{NAME}.SemanticModel"
 DEF = MODEL_DIR / "definition"
+# "Measures" is reserved by the engine (it's the MDX name for all measures); Power BI refuses a table
+# with that name. The leading underscore is the usual convention and sorts the table first.
+MEASURES_TABLE = "_Measures"
 DEFAULT_DATA_FOLDER = "https://raw.githubusercontent.com/lazelee/msft-financial-dashboard/main/data/"
 T = "\t"
 
@@ -451,7 +454,7 @@ def write_calculated(name, description, dax, columns, hidden=False):
 
 
 def write_measures_table():
-    out = ["/// All model measures, grouped in display folders.", "table Measures", f"{T}lineageTag: {lineage('Measures')}", ""]
+    out = ["/// All model measures, grouped in display folders.", f"table {MEASURES_TABLE}", f"{T}lineageTag: {lineage(MEASURES_TABLE)}", ""]
     for name, dax, fmt, folder, desc in MEASURES:
         if desc:
             out.append(f"{T}/// {desc}")
@@ -466,7 +469,7 @@ def write_measures_table():
         if name.startswith("_"):
             out.append(f"{T*2}isHidden")
         out.append(f"{T*2}displayFolder: {folder}")
-        out.append(f"{T*2}lineageTag: {lineage('Measures', name)}")
+        out.append(f"{T*2}lineageTag: {lineage(MEASURES_TABLE, name)}")
         if name in DYNAMIC_FORMATS:
             out.append("")
             out.append(f"{T*2}formatStringDefinition =")
@@ -475,12 +478,12 @@ def write_measures_table():
     out.append(f"{T}column Placeholder")
     out.append(f"{T*2}dataType: string")
     out.append(f"{T*2}isHidden")
-    out.append(f"{T*2}lineageTag: {lineage('Measures', 'Placeholder')}")
+    out.append(f"{T*2}lineageTag: {lineage(MEASURES_TABLE, 'Placeholder')}")
     out.append(f"{T*2}summarizeBy: none")
     out.append(f"{T*2}isNameInferred")
     out.append(f"{T*2}sourceColumn: [Placeholder]")
     out.append("")
-    out.append(f"{T}partition Measures = calculated")
+    out.append(f"{T}partition {MEASURES_TABLE} = calculated")
     out.append(f"{T*2}mode: import")
     out.append(f"{T*2}source = ROW ( \"Placeholder\", \"\" )")
     out.append("")
@@ -517,7 +520,7 @@ def build():
     (DEF / "tables").mkdir(parents=True)
     files = {}
     files["database.tmdl"] = "database\n\tcompatibilityLevel: 1601\n"
-    table_names = [t[0] for t in CSV_TABLES] + ["P&L Line", "Revenue Growth Flex", "Opex Flex", "Measures"]
+    table_names = [t[0] for t in CSV_TABLES] + ["P&L Line", "Revenue Growth Flex", "Opex Flex", MEASURES_TABLE]
     files["model.tmdl"] = (
         "model Model\n\tculture: en-US\n\tdefaultPowerBIDataSourceVersion: powerBI_V3\n\tdiscourageImplicitMeasures\n"
         "\tsourceQueryCulture: en-US\n\tdataAccessOptions\n\t\tlegacyRedirects\n\t\treturnErrorValuesAsNull\n\n"
@@ -559,7 +562,7 @@ in
     files["tables/Opex Flex.tmdl"] = write_calculated(
         "Opex Flex", "What-if: change to forecast operating expenses (−10% to +10%).",
         "GENERATESERIES ( -0.10, 0.10, 0.01 )", [("Opex Flex", "double", None, PP, False, "Value")])
-    files["tables/Measures.tmdl"] = write_measures_table()
+    files[f"tables/{MEASURES_TABLE}.tmdl"] = write_measures_table()
 
     for rel_path, content in files.items():
         path = DEF / rel_path

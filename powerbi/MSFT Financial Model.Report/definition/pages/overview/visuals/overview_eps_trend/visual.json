@@ -38,13 +38,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Diluted EPS"
                 }
               },
-              "queryRef": "Measures.Diluted EPS",
+              "queryRef": "_Measures.Diluted EPS",
               "nativeQueryRef": "Diluted EPS",
               "displayName": "Diluted EPS"
             }

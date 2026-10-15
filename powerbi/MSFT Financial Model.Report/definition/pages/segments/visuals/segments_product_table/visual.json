@@ -35,13 +35,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Mix Revenue"
                 }
               },
-              "queryRef": "Measures.Mix Revenue",
+              "queryRef": "_Measures.Mix Revenue",
               "nativeQueryRef": "Mix Revenue",
               "displayName": "FY26 revenue"
             },
@@ -50,13 +50,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Mix Revenue YoY %"
                 }
               },
-              "queryRef": "Measures.Mix Revenue YoY %",
+              "queryRef": "_Measures.Mix Revenue YoY %",
               "nativeQueryRef": "Mix Revenue YoY %",
               "displayName": "YoY"
             },
@@ -65,13 +65,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Mix Share %"
                 }
               },
-              "queryRef": "Measures.Mix Share %",
+              "queryRef": "_Measures.Mix Share %",
               "nativeQueryRef": "Mix Share %",
               "displayName": "Share"
             }
@@ -85,7 +85,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Measures"
+                    "Entity": "_Measures"
                   }
                 },
                 "Property": "Mix Revenue"

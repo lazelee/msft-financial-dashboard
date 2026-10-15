@@ -70,13 +70,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Assumption Value"
                 }
               },
-              "queryRef": "Measures.Assumption Value",
+              "queryRef": "_Measures.Assumption Value",
               "nativeQueryRef": "Assumption Value",
               "displayName": "Value"
             }

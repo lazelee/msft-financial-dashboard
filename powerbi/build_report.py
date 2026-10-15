@@ -18,6 +18,7 @@ DEF = REPORT / "definition"
 SCHEMA = "https://developer.microsoft.com/json-schemas/fabric/item/report/definition"
 VISUAL_SCHEMA = f"{SCHEMA}/visualContainer/2.0.0/schema.json"
 W, H = 1280, 720
+MEASURES_TABLE = "_Measures"  # must match build_model.MEASURES_TABLE
 
 # Palette: neutral greys with one accent, plus semantic green/red for favourable/unfavourable.
 INK, MUTED, ACCENT = "#1F2328", "#5B6470", "#0F6CBD"
@@ -38,7 +39,7 @@ def lit(value):
 
 
 def measure(name):
-    return {"Measure": {"Expression": {"SourceRef": {"Entity": "Measures"}}, "Property": name}}
+    return {"Measure": {"Expression": {"SourceRef": {"Entity": MEASURES_TABLE}}, "Property": name}}
 
 
 def column(table, col):
@@ -338,9 +339,9 @@ def plan_vs_actual():
     p = Page("plan_vs_actual", "Plan vs Actual", "FY2026 actual vs the plan this model would have produced from FY2025 actuals (no hindsight) · green = favourable")
     fy = filter_in("Period", "Fiscal Year Label", ["FY2026"], "f_fy26")
     color = {"values": [{"properties": {"fontColor": _measure_color("Variance Color")},
-                         "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}], "metadata": "Measures.P&L Variance"}},
+                         "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}], "metadata": f"{MEASURES_TABLE}.P&L Variance"}},
                         {"properties": {"fontColor": _measure_color("Variance Color")},
-                         "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}], "metadata": "Measures.P&L Variance %"}}]}
+                         "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}], "metadata": f"{MEASURES_TABLE}.P&L Variance %"}}]}
     p.add("variance", "pivotTable", 24, 88, 720, 616,
           roles={"Rows": [proj(LINE)], "Values": [proj(measure("P&L Plan"), "Plan"), proj(measure("P&L Actual"), "Actual"),
                                                   proj(measure("P&L Variance"), "Variance"), proj(measure("P&L Variance %"), "Variance %")]},
@@ -364,7 +365,7 @@ def sensitivity():
     p = Page("sensitivity", "Sensitivity", "FY2027E diluted EPS (Base) as revenue growth and operating margin move · costs flex 25% with revenue")
     growth, margin = column("Sensitivity", "Revenue Growth Label"), column("Sensitivity", "Operating Margin Label")
     colors = {"values": [{"properties": {"backColor": _measure_color("Sensitivity Color")},
-                          "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}], "metadata": "Measures.Sensitivity EPS"}}]}
+                          "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}], "metadata": f"{MEASURES_TABLE}.Sensitivity EPS"}}]}
     p.add("grid", "pivotTable", 24, 88, 820, 360,
           roles={"Rows": [proj(growth, "Revenue growth vs base")], "Columns": [proj(margin, "Operating margin vs base")],
                  "Values": [proj(measure("Sensitivity EPS"), "EPS")]},

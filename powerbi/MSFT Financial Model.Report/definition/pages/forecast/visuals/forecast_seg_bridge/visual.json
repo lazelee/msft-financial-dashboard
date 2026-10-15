@@ -38,13 +38,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Bridge Value"
                 }
               },
-              "queryRef": "Measures.Bridge Value",
+              "queryRef": "_Measures.Bridge Value",
               "nativeQueryRef": "Bridge Value",
               "displayName": "Change"
             }

@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Model MAPE ex One-offs"
                 }
               },
-              "queryRef": "Measures.Model MAPE ex One-offs",
+              "queryRef": "_Measures.Model MAPE ex One-offs",
               "nativeQueryRef": "Model MAPE ex One-offs",
               "displayName": "Model error ex one-offs"
             }

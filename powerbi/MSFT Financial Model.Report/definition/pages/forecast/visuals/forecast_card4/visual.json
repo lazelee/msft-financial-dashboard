@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "NY Diluted EPS YoY %"
                 }
               },
-              "queryRef": "Measures.NY Diluted EPS YoY %",
+              "queryRef": "_Measures.NY Diluted EPS YoY %",
               "nativeQueryRef": "NY Diluted EPS YoY %",
               "displayName": "FY27E EPS growth"
             }

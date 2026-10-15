@@ -56,13 +56,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Segment Revenue"
                 }
               },
-              "queryRef": "Measures.Segment Revenue",
+              "queryRef": "_Measures.Segment Revenue",
               "nativeQueryRef": "Segment Revenue",
               "displayName": "Revenue"
             },
@@ -71,13 +71,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Segment Operating Margin %"
                 }
               },
-              "queryRef": "Measures.Segment Operating Margin %",
+              "queryRef": "_Measures.Segment Operating Margin %",
               "nativeQueryRef": "Segment Operating Margin %",
               "displayName": "Op. margin"
             }

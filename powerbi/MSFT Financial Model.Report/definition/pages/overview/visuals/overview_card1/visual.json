@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "LY Revenue YoY %"
                 }
               },
-              "queryRef": "Measures.LY Revenue YoY %",
+              "queryRef": "_Measures.LY Revenue YoY %",
               "nativeQueryRef": "LY Revenue YoY %",
               "displayName": "FY26 revenue growth"
             }

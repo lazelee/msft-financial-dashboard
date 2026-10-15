@@ -34,13 +34,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Segment Revenue Plan"
                 }
               },
-              "queryRef": "Measures.Segment Revenue Plan",
+              "queryRef": "_Measures.Segment Revenue Plan",
               "nativeQueryRef": "Segment Revenue Plan",
               "displayName": "Revenue plan"
             },
@@ -49,13 +49,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Segment Revenue Actual"
                 }
               },
-              "queryRef": "Measures.Segment Revenue Actual",
+              "queryRef": "_Measures.Segment Revenue Actual",
               "nativeQueryRef": "Segment Revenue Actual",
               "displayName": "Revenue actual"
             },
@@ -64,13 +64,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Segment Revenue Variance %"
                 }
               },
-              "queryRef": "Measures.Segment Revenue Variance %",
+              "queryRef": "_Measures.Segment Revenue Variance %",
               "nativeQueryRef": "Segment Revenue Variance %",
               "displayName": "Var %"
             },
@@ -79,13 +79,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Segment OM % Plan"
                 }
               },
-              "queryRef": "Measures.Segment OM % Plan",
+              "queryRef": "_Measures.Segment OM % Plan",
               "nativeQueryRef": "Segment OM % Plan",
               "displayName": "OM plan"
             },
@@ -94,13 +94,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "Segment OM % Actual"
                 }
               },
-              "queryRef": "Measures.Segment OM % Actual",
+              "queryRef": "_Measures.Segment OM % Actual",
               "nativeQueryRef": "Segment OM % Actual",
               "displayName": "OM actual"
             }

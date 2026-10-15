@@ -56,13 +56,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures"
+                      "Entity": "_Measures"
                     }
                   },
                   "Property": "P&L Value"
                 }
               },
-              "queryRef": "Measures.P&L Value",
+              "queryRef": "_Measures.P&L Value",
               "nativeQueryRef": "P&L Value",
               "displayName": "Value"
             }
