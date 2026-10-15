@@ -201,8 +201,27 @@ def test_measure_names_are_unique_across_columns_and_tables():
 
 
 def test_every_dax_table_reference_is_quoted():
-    """Unquoted names can collide with DAX/engine keywords (KPI, Date, ...); the generator quotes them all."""
-    text = (ROOT / "powerbi" / f"{bm.NAME}.SemanticModel" / "definition" / "tables" / f"{bm.MEASURES_TABLE}.tmdl").read_text()
-    code = re.sub(r'"[^"]*"', '""', text)
-    unquoted = sorted(set(re.findall(r"(?<![\w'\]])([A-Za-z_][\w ]*?)\[", code)) - {""})
-    assert not unquoted, unquoted
+    """
+    Unquoted table names can parse as DAX keywords: Power BI rejected ISFILTERED ( Version ) with
+    "The syntax for 'Version' is incorrect", breaking every measure built on it. Every table name in
+    generated DAX code (outside strings and [brackets]) must be quoted.
+    """
+    names = sorted(bm.table_names(), key=len, reverse=True)
+    bare = re.compile(r"(?<![\w.'])(" + "|".join(re.escape(n) for n in names) + r")(?![\w'])")
+    problems = []
+    for name, dax, *_ in bm.MEASURES:
+        code = bm._DAX_TOKENS.split(bm.quote_tables(dax))[0::2]
+        for chunk in code:
+            problems += [f"{name}: {m}" for m in bare.findall(chunk)]
+    assert not problems, problems
+
+
+def test_quote_tables_leaves_names_and_strings_alone():
+    q = bm.quote_tables
+    assert q("ISFILTERED ( Version )") == "ISFILTERED ( 'Version' )"
+    assert q("SUMX ( ALL ( Scenario ), Scenario[Probability] * [Selected Scenario] )") == \
+        "SUMX ( ALL ( 'Scenario' ), 'Scenario'[Probability] * [Selected Scenario] )"
+    assert q('Version[Version Type] = "Version"') == "'Version'[Version Type] = \"Version\""
+    assert q("'P&L'[Amount] + Financial Metrics[Value]") == "'P&L'[Amount] + 'Financial Metrics'[Value]"
+    assert q("[Segment Revenue] / CALCULATE ( [Segment Revenue], REMOVEFILTERS ( Segment ) )") == \
+        "[Segment Revenue] / CALCULATE ( [Segment Revenue], REMOVEFILTERS ( 'Segment' ) )"

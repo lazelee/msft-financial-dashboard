@@ -8,7 +8,7 @@ table _Measures
 		lineageTag: 71c550b6-a34a-5b14-9d9a-c0fef12ea5d7
 
 	/// Latest fiscal year with reported results.
-	measure 'Last Actual FY' = CALCULATE ( MAX ( 'Period'[Fiscal Year] ), REMOVEFILTERS ( Period ), 'Period'[Is Forecast] = FALSE () )
+	measure 'Last Actual FY' = CALCULATE ( MAX ( 'Period'[Fiscal Year] ), REMOVEFILTERS ( 'Period' ), 'Period'[Is Forecast] = FALSE () )
 		formatString: 0
 		displayFolder: Engine
 		lineageTag: 4e65bb4e-07cb-5a46-bf88-bbb5c256139b
@@ -18,7 +18,7 @@ table _Measures
 			VAR _scenario = [Selected Scenario]
 			RETURN
 			    IF (
-			        ISFILTERED ( Version ),
+			        ISFILTERED ( 'Version' ),
 			        SUM ( 'P&L'[Amount] ),
 			        VAR _actual = CALCULATE ( SUM ( 'P&L'[Amount] ), 'Version'[Version Type] = "Actual" )
 			        RETURN IF ( NOT ISBLANK ( _actual ), _actual, CALCULATE ( SUM ( 'P&L'[Amount] ), 'Version'[Scenario] = _scenario ) )
@@ -29,7 +29,7 @@ table _Measures
 		lineageTag: 5028014a-bd0e-56b6-b578-415b12462c15
 
 	/// 1 for forecast periods (where flex parameters apply).
-	measure '_Is Forecast' = IF ( MAX ( 'Period'[Years From Last Actual] ) > 0 && NOT ISFILTERED ( Version ), 1, 0 )
+	measure '_Is Forecast' = IF ( MAX ( 'Period'[Years From Last Actual] ) > 0 && NOT ISFILTERED ( 'Version' ), 1, 0 )
 		formatString: 0
 		isHidden
 		displayFolder: Engine
@@ -179,7 +179,7 @@ table _Measures
 			VAR _actual = CALCULATE ( SUM ( 'Financial Metrics'[Value] ), 'Version'[Version Type] = "Actual" )
 			RETURN
 			    IF (
-			        ISFILTERED ( Version ),
+			        ISFILTERED ( 'Version' ),
 			        SUM ( 'Financial Metrics'[Value] ),
 			        IF ( NOT ISBLANK ( _actual ), _actual, CALCULATE ( SUM ( 'Financial Metrics'[Value] ), 'Version'[Scenario] = _scenario ) )
 			    )
@@ -238,7 +238,7 @@ table _Measures
 		lineageTag: 41bb13e2-ff71-5107-8d16-bef13720d64e
 
 	/// Revenue in the same period a year earlier.
-	measure 'Revenue PY' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( Period ), 'Period'[PeriodKey] = _k - 10 )
+	measure 'Revenue PY' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( 'Period' ), 'Period'[PeriodKey] = _k - 10 )
 		formatString: #,##0;(#,##0)
 		displayFolder: Growth
 		lineageTag: f2a31d6f-e9cc-544f-88ba-7d93cf6d0b5f
@@ -248,71 +248,71 @@ table _Measures
 		displayFolder: Growth
 		lineageTag: 4cbacefe-8ad9-5eb7-a37e-dd95215caf8d
 
-	measure 'Operating Income YoY %' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN DIVIDE ( [Operating Income], CALCULATE ( [Operating Income], REMOVEFILTERS ( Period ), 'Period'[PeriodKey] = _k - 10 ) ) - 1
+	measure 'Operating Income YoY %' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN DIVIDE ( [Operating Income], CALCULATE ( [Operating Income], REMOVEFILTERS ( 'Period' ), 'Period'[PeriodKey] = _k - 10 ) ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Growth
 		lineageTag: 0a7b34c0-27a1-5c64-8151-0b3173cd6b59
 
-	measure 'Diluted EPS YoY %' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN DIVIDE ( [Diluted EPS], CALCULATE ( [Diluted EPS], REMOVEFILTERS ( Period ), 'Period'[PeriodKey] = _k - 10 ) ) - 1
+	measure 'Diluted EPS YoY %' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN DIVIDE ( [Diluted EPS], CALCULATE ( [Diluted EPS], REMOVEFILTERS ( 'Period' ), 'Period'[PeriodKey] = _k - 10 ) ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Growth
 		lineageTag: 9a0c4478-877f-50ca-838d-513d09a3d24d
 
 	/// Last actual fiscal year revenue.
-	measure 'LY Revenue' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'LY Revenue' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Headline
 		lineageTag: 4b50be1b-efae-5a9b-baf2-39b87ae83b4a
 
-	measure 'LY Revenue YoY %' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Revenue YoY %], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'LY Revenue YoY %' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Revenue YoY %], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Headline
 		lineageTag: 3e104660-df83-5a90-92dd-f5df7c5d2ccf
 
-	measure 'LY Operating Margin %' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Operating Margin %], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'LY Operating Margin %' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Operating Margin %], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: 0.0%;-0.0%
 		displayFolder: Headline
 		lineageTag: 2ec73b19-fc10-5310-a171-857fe858c81e
 
-	measure 'LY Diluted EPS' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'LY Diluted EPS' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: $0.00;($0.00)
 		displayFolder: Headline
 		lineageTag: 61e542e2-cb42-5d30-b9e8-ae7b818f34b2
 
-	measure 'LY Free Cash Flow' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Free Cash Flow], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'LY Free Cash Flow' = VAR _fy = [Last Actual FY] RETURN CALCULATE ( [Free Cash Flow], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Headline
 		lineageTag: 5f9bcb21-8906-5f4b-9e8a-a59cc3c858f0
 
 	/// Next fiscal year revenue, selected scenario.
-	measure 'NY Revenue' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'NY Revenue' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Revenue], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: #,##0;(#,##0)
 		displayFolder: Headline
 		lineageTag: 8584fa41-7ebf-50e8-a192-9afa79d07add
 
-	measure 'NY Revenue YoY %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Revenue YoY %], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'NY Revenue YoY %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Revenue YoY %], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Headline
 		lineageTag: 5202e8ae-fc04-5eaa-9b6d-9e0ef83c56b0
 
-	measure 'NY Operating Margin %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Operating Margin %], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'NY Operating Margin %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Operating Margin %], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: 0.0%;-0.0%
 		displayFolder: Headline
 		lineageTag: 0c2bf7b4-e421-5587-b98a-d7b857e3ca05
 
 	/// Next fiscal year diluted EPS, selected scenario (with flex).
-	measure 'NY Diluted EPS' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'NY Diluted EPS' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: $0.00;($0.00)
 		displayFolder: Headline
 		lineageTag: ecce56b5-bfa7-5379-b7f8-3de0d4edc3e2
 
-	measure 'NY Diluted EPS YoY %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Diluted EPS YoY %], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'NY Diluted EPS YoY %' = VAR _fy = [Last Actual FY] + 1 RETURN CALCULATE ( [Diluted EPS YoY %], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Headline
 		lineageTag: 86d51ff1-9e8a-5960-8ec4-d8bf5cd7e4fc
 
 	/// Diluted EPS three years out, selected scenario.
-	measure 'Y3 Diluted EPS' = VAR _fy = [Last Actual FY] + 3 RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( Period ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
+	measure 'Y3 Diluted EPS' = VAR _fy = [Last Actual FY] + 3 RETURN CALCULATE ( [Diluted EPS], REMOVEFILTERS ( 'Period' ), 'Period'[Fiscal Year] = _fy, 'Period'[Period Type] = "Year" )
 		formatString: $0.00;($0.00)
 		displayFolder: Headline
 		lineageTag: d9a33545-2a87-5f91-8424-d5a032c1c96b
@@ -325,7 +325,7 @@ table _Measures
 	/// Next-year EPS weighted by scenario probabilities (assumptions file).
 	measure 'NY Diluted EPS (Probability-Weighted)' =
 			SUMX (
-			    ALL ( Scenario ),
+			    ALL ( 'Scenario' ),
 			    'Scenario'[Probability] * CALCULATE ( [NY Diluted EPS] )
 			)
 		formatString: $0.00;($0.00)
@@ -338,7 +338,7 @@ table _Measures
 			VAR _actual = CALCULATE ( SUM ( 'Segment P&L'[Amount] ), 'Version'[Version Type] = "Actual" )
 			RETURN
 			    IF (
-			        ISFILTERED ( Version ),
+			        ISFILTERED ( 'Version' ),
 			        SUM ( 'Segment P&L'[Amount] ),
 			        IF ( NOT ISBLANK ( _actual ), _actual, CALCULATE ( SUM ( 'Segment P&L'[Amount] ), 'Version'[Scenario] = _scenario ) )
 			    )
@@ -368,12 +368,12 @@ table _Measures
 		displayFolder: Segments
 		lineageTag: 35115e0f-04c1-50af-bf70-55ae57cb4a99
 
-	measure 'Segment Revenue YoY %' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN DIVIDE ( [Segment Revenue], CALCULATE ( [Segment Revenue], REMOVEFILTERS ( Period ), 'Period'[PeriodKey] = _k - 10 ) ) - 1
+	measure 'Segment Revenue YoY %' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN DIVIDE ( [Segment Revenue], CALCULATE ( [Segment Revenue], REMOVEFILTERS ( 'Period' ), 'Period'[PeriodKey] = _k - 10 ) ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Segments
 		lineageTag: 73e8e990-7e91-504d-9c3a-416617341f02
 
-	measure 'Segment Revenue Share %' = DIVIDE ( [Segment Revenue], CALCULATE ( [Segment Revenue], REMOVEFILTERS ( Segment ) ) )
+	measure 'Segment Revenue Share %' = DIVIDE ( [Segment Revenue], CALCULATE ( [Segment Revenue], REMOVEFILTERS ( 'Segment' ) ) )
 		formatString: 0.0%;-0.0%
 		displayFolder: Segments
 		lineageTag: a97a4f0f-0a40-5723-bfb1-463e3eea45f5
@@ -384,7 +384,7 @@ table _Measures
 		displayFolder: Revenue mix
 		lineageTag: 586de13e-1867-55a3-b8bc-5417388cb3c9
 
-	measure 'Mix Revenue YoY %' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN DIVIDE ( [Mix Revenue], CALCULATE ( [Mix Revenue], REMOVEFILTERS ( Period ), 'Period'[PeriodKey] = _k - 10 ) ) - 1
+	measure 'Mix Revenue YoY %' = VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] ) RETURN DIVIDE ( [Mix Revenue], CALCULATE ( [Mix Revenue], REMOVEFILTERS ( 'Period' ), 'Period'[PeriodKey] = _k - 10 ) ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Revenue mix
 		lineageTag: 824978fe-9ec6-5843-af00-98f5ada18cdd
@@ -437,7 +437,7 @@ table _Measures
 	measure 'P&L YoY' =
 			VAR _k = SELECTEDVALUE ( 'Period'[PeriodKey] )
 			VAR _now = [P&L Value]
-			VAR _prior = CALCULATE ( [P&L Value], REMOVEFILTERS ( Period ), 'Period'[PeriodKey] = _k - 10 )
+			VAR _prior = CALCULATE ( [P&L Value], REMOVEFILTERS ( 'Period' ), 'Period'[PeriodKey] = _k - 10 )
 			RETURN
 			    IF (
 			        NOT ISBLANK ( _now ) && NOT ISBLANK ( _prior ),
@@ -541,7 +541,7 @@ table _Measures
 		lineageTag: 7aee703b-6499-5117-8364-3e5d1df192ed
 
 	measure 'Sensitivity vs Base' =
-			VAR _base = CALCULATE ( SUM ( 'Sensitivity'[Diluted EPS ($)] ), REMOVEFILTERS ( Sensitivity ), 'Sensitivity'[Revenue Growth Delta (pp)] = 0, 'Sensitivity'[Operating Margin Delta (bp)] = 0 )
+			VAR _base = CALCULATE ( SUM ( 'Sensitivity'[Diluted EPS ($)] ), REMOVEFILTERS ( 'Sensitivity' ), 'Sensitivity'[Revenue Growth Delta (pp)] = 0, 'Sensitivity'[Operating Margin Delta (bp)] = 0 )
 			RETURN DIVIDE ( [Sensitivity EPS], _base ) - 1
 		formatString: +0.0%;-0.0%;0.0%
 		displayFolder: Sensitivity
@@ -555,13 +555,13 @@ table _Measures
 		lineageTag: 50399174-52a7-5e2a-bedf-01e1c6b93d84
 
 	/// Mean absolute % error of the model.
-	measure 'Model MAPE' = AVERAGEX ( Backtest, ABS ( 'Backtest'[Model Error %] ) )
+	measure 'Model MAPE' = AVERAGEX ( 'Backtest', ABS ( 'Backtest'[Model Error %] ) )
 		formatString: 0.0%;-0.0%
 		displayFolder: Validation
 		lineageTag: 432fce9b-5c9a-5a07-a87f-29da2b728d35
 
 	/// Same, for last-year-repeats.
-	measure 'Naive MAPE' = AVERAGEX ( Backtest, ABS ( 'Backtest'[Naive Error %] ) )
+	measure 'Naive MAPE' = AVERAGEX ( 'Backtest', ABS ( 'Backtest'[Naive Error %] ) )
 		formatString: 0.0%;-0.0%
 		displayFolder: Validation
 		lineageTag: 458892c2-1867-546a-84ac-c35022daff7c
@@ -582,12 +582,12 @@ table _Measures
 		displayFolder: Validation
 		lineageTag: eb155bca-f1c3-520b-a4f8-eca54407e85f
 
-	measure 'Checks Passed' = COUNTROWS ( FILTER ( Checks, 'Checks'[Status] = "Pass" ) ) + 0
+	measure 'Checks Passed' = COUNTROWS ( FILTER ( 'Checks', 'Checks'[Status] = "Pass" ) ) + 0
 		formatString: #,##0
 		displayFolder: Validation
 		lineageTag: 450bb710-f554-5d17-ab9a-8ae9f17ac7f2
 
-	measure 'Checks Failed' = COUNTROWS ( FILTER ( Checks, 'Checks'[Status] = "Fail" ) ) + 0
+	measure 'Checks Failed' = COUNTROWS ( FILTER ( 'Checks', 'Checks'[Status] = "Fail" ) ) + 0
 		formatString: #,##0
 		displayFolder: Validation
 		lineageTag: 63359a8b-e341-5cc6-863b-7c35f013d7ca

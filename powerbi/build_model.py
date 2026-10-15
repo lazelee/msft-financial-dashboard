@@ -454,13 +454,26 @@ def write_calculated(name, description, dax, columns, hidden=False):
     return "\n".join(out) + "\n"
 
 
+def table_names():
+    return [t[0] for t in CSV_TABLES] + ["P&L Line", "Revenue Growth Flex", "Opex Flex", MEASURES_TABLE]
+
+
+# DAX pieces that must never be rewritten: "strings", [measure or column names], 'quoted names'.
+_DAX_TOKENS = re.compile(r'("(?:[^"]|"")*"|\[[^\]]*\]|\'(?:[^\']|\'\')*\')')
+
+
 def quote_tables(dax):
-    """'Table'[Column] for every model table, quoted or not, so names can't collide with DAX keywords."""
-    names = sorted([t[0] for t in CSV_TABLES] + ["P&L Line", "Revenue Growth Flex", "Opex Flex", MEASURES_TABLE],
-                   key=len, reverse=True)
-    for name in names:
-        dax = re.sub(r"(?<![\w'])" + re.escape(name) + r"(?=\[)", f"'{name}'", dax)
-    return dax
+    """
+    Quote every table name in DAX code ('Version', 'Period'[Fiscal Year], ALL ( 'Scenario' )).
+    Unquoted, a table name can be read as a DAX keyword: ISFILTERED ( Version ) is a syntax error.
+    Strings, [bracketed names] and already-quoted names are left alone.
+    """
+    names = sorted(table_names(), key=len, reverse=True)
+    pattern = re.compile(r"(?<![\w.])(" + "|".join(re.escape(n) for n in names) + r")(?![\w])")
+    parts = _DAX_TOKENS.split(dax)
+    for i in range(0, len(parts), 2):  # even indexes are plain code between protected tokens
+        parts[i] = pattern.sub(lambda m: f"'{m.group(1)}'", parts[i])
+    return "".join(parts)
 
 
 def write_measures_table():
@@ -530,12 +543,11 @@ def build():
     (DEF / "tables").mkdir(parents=True)
     files = {}
     files["database.tmdl"] = "database\n\tcompatibilityLevel: 1601\n"
-    table_names = [t[0] for t in CSV_TABLES] + ["P&L Line", "Revenue Growth Flex", "Opex Flex", MEASURES_TABLE]
     files["model.tmdl"] = (
         "model Model\n\tculture: en-US\n\tdefaultPowerBIDataSourceVersion: powerBI_V3\n\tdiscourageImplicitMeasures\n"
         "\tsourceQueryCulture: en-US\n\tdataAccessOptions\n\t\tlegacyRedirects\n\t\treturnErrorValuesAsNull\n\n"
         "annotation PBI_ProTooling = [\"TMDL-Extension\"]\n\n"
-        + "\n".join(f"ref table {q(t)}" for t in table_names) + "\n"
+        + "\n".join(f"ref table {q(t)}" for t in table_names()) + "\n"
     )
     files["expressions.tmdl"] = (
         "/// Where the CSVs live: a URL ending in / (default: this repo on GitHub) or a local folder path ending in \\\n"
